@@ -1,0 +1,36 @@
+{
+    "DATES": {
+        "NEXT_MONTH": "(InRange(kMDItemLastUsedDate,$time.this_month(+1),$time.this_month(+2)) || (InRange(kMDItemDueDate,$time.this_month(+1),$time.this_month(+2))))",
+        "NEXT_WEEK": "(InRange(kMDItemLastUsedDate,$time.this_week(+1),$time.this_week(+2)) || (InRange(kMDItemDueDate,$time.this_week(+1),$time.this_week(+2))))",
+        "NEXT_YEAR": "(InRange(kMDItemLastUsedDate,$time.this_year(+1),$time.this_year(+2)) || (InRange(kMDItemDueDate,$time.this_year(+1),$time.this_year(+2))))",
+        "THIS_MONTH": "(InRange(kMDItemLastUsedDate,$time.this_month,$time.this_month(+1)) || (InRange(kMDItemDueDate,$time.this_month,$time.this_month(+1))))",
+        "THIS_WEEK": "(InRange(kMDItemLastUsedDate,$time.this_week,$time.this_week(+1)) || (InRange(kMDItemDueDate,$time.this_week,$time.this_week(+1))))",
+        "THIS_YEAR": "(InRange(kMDItemLastUsedDate,$time.this_year,$time.this_year(+1)) || (InRange(kMDItemDueDate,$time.this_year,$time.this_year(+1))))",
+        "TODAY": "(InRange(kMDItemLastUsedDate,$time.today,$time.today(+1)) || (InRange(kMDItemDueDate,$time.today,$time.today(+1))))",
+        "TOMORROW": "(InRange(kMDItemLastUsedDate,$time.today(+1),$time.today(+2)) || (InRange(kMDItemDueDate,$time.today(+1),$time.today(+2))))",
+        "YESTERDAY": "(InRange(kMDItemLastUsedDate,$time.today(-1),$time.today) || (InRange(kMDItemDueDate,$time.today(-1),$time.today)))"
+    },
+    "KINDS": {
+        "APPLICATIONS": "kMDItemContentTypeTree = com.apple.application || kMDItemContentTypeTree = com.apple.dashboard-widget || kMDItemContentTypeTree = com.sun.java-archive",
+        "BOOKMARKS": "kMDItemContentTypeTree = com.apple.safari.bookmark || kMDItemContentTypeTree = public.bookmark",
+        "CONTACT": "kMDItemContentTypeTree = public.contact || kMDItemContentTypeTree = com.apple.addressbook.group || kMDItemContentTypeTree = com.microsoft.entourage.virtual.group",
+        "DIRECTORIES": "kMDItemContentTypeTree = public.folder || kMDItemContentTypeTree = com.apple.mount-point",
+        "DOCUMENTS": "kMDItemContentTypeTree = public.content && kMDItemContentTypeTree != com.apple.application && kMDItemContentTypeTree != com.apple.dashboard-widget && kMDItemContentTypeTree != com.sun.java-archive && kMDItemContentTypeTree != public.contact && kMDItemContentTypeTree != com.apple.addressbook.group && kMDItemContentTypeTree != com.microsoft.entourage.virtual.group && kMDItemContentTypeTree != public.folder && kMDItemContentTypeTree != com.apple.mount-point && kMDItemContentTypeTree != public.email-message && kMDItemContentTypeTree != com.apple.mail.emlx && kMDItemContentTypeTree != public.calendar-event && kMDItemContentTypeTree != public.image && kMDItemContentTypeTree != public.movie && kMDItemContentTypeTree != public.audio && kMDItemContentTypeTree != com.adobe.pdf && kMDItemContentTypeTree != com.apple.systempreference.prefpane && kMDItemContentTypeTree != public.to-do-item && kMDItemContentTypeTree != com.apple.ical.bookmark && kMDItemContentTypeTree != com.apple.safari.bookmark && kMDItemContentTypeTree != public.bookmark",
+        "EMAIL": "kMDItemContentTypeTree = public.email-message || kMDItemContentTypeTree = com.apple.mail.emlx",
+        "EVENT": "kMDItemContentTypeTree = public.calendar-event || kMDItemContentTypeTree = com.apple.ical.bookmark || kMDItemContentTypeTree = com.apple.ical.ics.event || kMDItemContentTypeTree = com.microsoft.entourage.virtual.event",
+        "EVENT_TODO": "kMDItemContentTypeTree = public.calendar-event || kMDItemContentTypeTree = com.apple.ical.bookmark || kMDItemContentTypeTree = com.apple.ical.ics.event || kMDItemContentTypeTree = com.microsoft.entourage.virtual.event || kMDItemContentTypeTree = public.to-do-item || kMDItemContentTypeTree = com.apple.ical.bookmark.todo || kMDItemContentType = com.apple.ical.ics.todo || kMDItemContentTypeTree = com.microsoft.entourage.virtual.task",
+        "FONTS": "kMDItemContentTypeTree = public.font",
+        "IMAGES": "kMDItemContentTypeTree = public.image",
+        "MESSAGES": "kMDItemContentTypeTree = public.message || kMDItemContentTypeTree = com.apple.mail.emlx",
+        "MOVIES": "kMDItemContentTypeTree = public.movie",
+        "MUSIC": "kMDItemContentTypeTree = public.audio",
+        "OTHER": "kMDItemContentTypeTree!= public.content &&  kMDItemContentTypeTree != com.apple.application && kMDItemContentTypeTree != com.apple.dashboard-widget && kMDItemContentTypeTree != com.sun.java-archive && kMDItemContentTypeTree != public.contact && kMDItemContentTypeTree != com.apple.addressbook.group && kMDItemContentTypeTree != com.microsoft.entourage.virtual.group && kMDItemContentTypeTree != public.folder && kMDItemContentTypeTree != com.apple.mount-point && kMDItemContentTypeTree != public.email-message && kMDItemContentTypeTree != com.apple.mail.emlx && kMDItemContentTypeTree != public.calendar-event && kMDItemContentTypeTree != public.image && kMDItemContentTypeTree != public.movie && kMDItemContentTypeTree != public.audio && kMDItemContentTypeTree != com.adobe.pdf && kMDItemContentTypeTree != com.apple.systempreference.prefpane && kMDItemContentTypeTree != public.to-do-item && kMDItemContentTypeTree != com.apple.ical.bookmark && kMDItemContentTypeTree != com.apple.safari.bookmark && kMDItemContentTypeTree != public.bookmark && kMDItemContentType",
+        "PDF": "kMDItemContentTypeTree = com.adobe.pdf",
+        "PRESENTATIONS": "kMDItemContentTypeTree = public.presentation",
+        "SOURCE": "kMDItemContentTypeTree = public.source-code || kMDItemContentTypeTree = public.html",
+        "SPREADSHEETS": " kMDItemContentTypeTree=com.apple.iwork.numbers.sffnumbers ||  kMDItemContentTypeTree=com.apple.iwork.numbers.numbers  || kMDItemContentTypeTree=com.apple.iwork.numbers.template || kMDItemContentTypeTree =com.microsoft.excel.xls",
+        "SYSTEM_PREFS": "kMDItemContentTypeTree = com.apple.systempreference.prefpane",
+        "TEXT": "kMDItemContentTypeTree = com.apple.iwork.pages.page || kMDItemContentTypeTree = com.apple.iwork.pages.sffpage || kMDItemContentTypeTree=com.apple.iwork.pages.template ||  kMDItemContentTypeTree=com.apple.iwork.pages.sfftemplate ||  kMDItemContentTypeTree=public.rtf ||  kMDItemContentTypeTree=com.apple.rtfd ||  kMDItemContentTypeTree=com.microsoft.word.doc ||  kMDItemContentTypeTree=public.plain-text",
+        "TODO": "kMDItemContentTypeTree = public.to-do-item || kMDItemContentTypeTree = com.apple.ical.bookmark.todo || kMDItemContentType = com.apple.ical.ics.todo || kMDItemContentTypeTree = com.microsoft.entourage.virtual.task"
+    }
+}

@@ -1,0 +1,1898 @@
+{
+    "Attributes": {
+        "MZItemIdentifiers": {
+            "multivalued": true,
+            "name": "MZItemIdentifiers",
+            "type": "CFString"
+        },
+        "MZItemTitles": {
+            "multivalued": true,
+            "name": "MZItemTitles",
+            "type": "CFString"
+        },
+        "MessageGUIDs": {
+            "multivalued": true,
+            "name": "MessageGUIDs",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "com_apple_ats__name_s": {
+            "multivalued": true,
+            "name": "com_apple_ats__name_s",
+            "type": "CFString"
+        },
+        "com_apple_ats_name_family": {
+            "multivalued": true,
+            "name": "com_apple_ats__name__family",
+            "type": "CFString"
+        },
+        "com_apple_ats_name_fond": {
+            "multivalued": true,
+            "type": "CFString"
+        },
+        "com_apple_ats_name_full": {
+            "multivalued": true,
+            "name": "com_apple_ats_name_full",
+            "type": "CFString"
+        },
+        "com_apple_ats_name_postscript": {
+            "multivalued": true,
+            "name": "com_apple_ats_name_postscript",
+            "type": "CFString"
+        },
+        "com_apple_ats_name_style": {
+            "multivalued": true,
+            "name": "com_apple_ats_name_style",
+            "type": "CFString"
+        },
+        "com_apple_iCal_Bookmark_SharedUID": {
+            "multivalued": false,
+            "name": "com_apple_iCal_Bookmark_SharedUID",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "com_apple_mail_attachmentKinds": {
+            "multivalued": true,
+            "name": "com_apple_mail_attachmentKinds",
+            "type": "CFString"
+        },
+        "com_apple_mail_attachmentNames": {
+            "multivalued": true,
+            "name": "com_apple_mail_attachmentNames",
+            "type": "CFString"
+        },
+        "com_apple_mail_attachmentSpecificTypes": {
+            "multivalued": true,
+            "name": "com_apple_mail_attachmentSpecificTypes",
+            "type": "CFString"
+        },
+        "com_apple_mail_attachmentTypes": {
+            "multivalued": true,
+            "name": "com_apple_mail_attachmentTypes",
+            "type": "CFString"
+        },
+        "com_apple_mail_dateLastViewed": {
+            "multivalued": false,
+            "name": "com_apple_mail_dateLastViewed",
+            "type": "CFDate"
+        },
+        "com_apple_mail_dateReceived": {
+            "multivalued": false,
+            "name": "com_apple_mail_dateReceived",
+            "type": "CFDate"
+        },
+        "com_apple_mail_flagColor": {
+            "multivalued": false,
+            "name": "com_apple_mail_flagColor",
+            "type": "CFNumber"
+        },
+        "com_apple_mail_flagged": {
+            "multivalued": false,
+            "name": "com_apple_mail_flagged",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "com_apple_mail_messageID": {
+            "multivalued": false,
+            "name": "com_apple_mail_messageID",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "com_apple_mail_priority": {
+            "multivalued": false,
+            "name": "com_apple_mail_priority",
+            "type": "CFNumber"
+        },
+        "com_apple_mail_read": {
+            "multivalued": false,
+            "name": "com_apple_mail_read",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "com_apple_mail_repliedTo": {
+            "multivalued": false,
+            "name": "com_apple_mail_repliedTo",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "com_apple_xcode_dsym_paths": {
+            "multivalued": true,
+            "name": "com_apple_xcode_dsym_paths",
+            "type": "CFString"
+        },
+        "com_apple_xcode_dsym_uuids": {
+            "multivalued": true,
+            "name": "com_apple_xcode_dsym_uuids",
+            "type": "CFString"
+        },
+        "kMDItemAccountIdentifier": {
+            "multivalued": false,
+            "name": "kMDItemAccountIdentifier",
+            "nosearch": true,
+            "notokenize": true,
+            "type": "CFString"
+        },
+        "kMDItemAcquisitionMake": {
+            "multivalued": false,
+            "name": "kMDItemAcquisitionMake",
+            "type": "CFString"
+        },
+        "kMDItemAcquisitionModel": {
+            "multivalued": false,
+            "name": "kMDItemAcquisitionModel",
+            "type": "CFString"
+        },
+        "kMDItemAlbum": {
+            "multivalued": false,
+            "name": "kMDItemAlbum",
+            "type": "CFString"
+        },
+        "kMDItemAlternateNames": {
+            "multivalued": true,
+            "name": "kMDItemAlternateNames",
+            "type": "CFString"
+        },
+        "kMDItemAltitude": {
+            "multivalued": false,
+            "name": "kMDItemAltitude",
+            "type": "CFNumber"
+        },
+        "kMDItemAperture": {
+            "multivalued": false,
+            "name": "kMDItemAperture",
+            "type": "CFNumber"
+        },
+        "kMDItemAppStoreCategory": {
+            "multivalued": false,
+            "name": "kMDItemAppStoreCategory",
+            "type": "CFString",
+            "uniqued": true
+        },
+        "kMDItemAppStoreCategoryType": {
+            "multivalued": false,
+            "name": "kMDItemAppStoreCategoryType",
+            "nosearch": true,
+            "type": "CFString",
+            "uniqued": true
+        },
+        "kMDItemAppleLoopDescriptors": {
+            "multivalued": true,
+            "name": "kMDItemAppleLoopDescriptors",
+            "type": "CFString"
+        },
+        "kMDItemAppleLoopsKeyFilterType": {
+            "multivalued": false,
+            "name": "kMDItemAppleLoopsKeyFilterType",
+            "type": "CFString"
+        },
+        "kMDItemAppleLoopsLoopMode": {
+            "multivalued": false,
+            "name": "kMDItemAppleLoopsLoopMode",
+            "type": "CFString"
+        },
+        "kMDItemAppleLoopsRootKey": {
+            "multivalued": false,
+            "name": "kMDItemAppleLoopsRootKey",
+            "type": "CFString"
+        },
+        "kMDItemApplicationCategories": {
+            "multivalued": true,
+            "name": "kMDItemApplicationCategories",
+            "type": "CFString"
+        },
+        "kMDItemAttributeChangeDate": {
+            "multivalued": false,
+            "name": "kMDItemAttributeChangeDate",
+            "nosearch": true,
+            "type": "CFDate"
+        },
+        "kMDItemAudiences": {
+            "multivalued": true,
+            "name": "kMDItemAudiences",
+            "type": "CFString"
+        },
+        "kMDItemAudioBitRate": {
+            "multivalued": false,
+            "name": "kMDItemAudioBitRate",
+            "type": "CFNumber"
+        },
+        "kMDItemAudioChannelCount": {
+            "multivalued": false,
+            "name": "kMDItemAudioChannelCount",
+            "type": "CFNumber"
+        },
+        "kMDItemAudioEncodingApplication": {
+            "multivalued": false,
+            "name": "kMDItemAudioEncodingApplication",
+            "type": "CFString"
+        },
+        "kMDItemAudioSampleRate": {
+            "multivalued": false,
+            "name": "kMDItemAudioSampleRate",
+            "type": "CFNumber"
+        },
+        "kMDItemAudioTrackNumber": {
+            "multivalued": false,
+            "name": "kMDItemAudioTrackNumber",
+            "type": "CFNumber"
+        },
+        "kMDItemAuthorAddresses": {
+            "multivalued": true,
+            "name": "kMDItemAuthorAddresses",
+            "type": "CFString"
+        },
+        "kMDItemAuthorContactIdentifiers": {
+            "multivalued": true,
+            "name": "kMDItemAuthorContactIdentifiers",
+            "nosearch": true,
+            "notokenize": true,
+            "type": "CFString"
+        },
+        "kMDItemAuthorEmailAddresses": {
+            "multivalued": true,
+            "name": "kMDItemAuthorEmailAddresses",
+            "type": "CFString"
+        },
+        "kMDItemAuthors": {
+            "multivalued": true,
+            "name": "kMDItemAuthors",
+            "type": "CFString"
+        },
+        "kMDItemBitsPerSample": {
+            "multivalued": false,
+            "name": "kMDItemBitsPerSample",
+            "type": "CFNumber"
+        },
+        "kMDItemBundleIdentifier": {
+            "multivalued": false,
+            "name": "kMDItemBundleIdentifier",
+            "nosearch": true,
+            "notokenize": true,
+            "type": "CFString"
+        },
+        "kMDItemCFBundleIdentifier": {
+            "multivalued": false,
+            "name": "kMDItemCFBundleIdentifier",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemCity": {
+            "multivalued": false,
+            "name": "kMDItemCity",
+            "type": "CFString"
+        },
+        "kMDItemCodecs": {
+            "multivalued": true,
+            "name": "kMDItemCodecs",
+            "type": "CFString"
+        },
+        "kMDItemColorSpace": {
+            "multivalued": false,
+            "name": "kMDItemColorSpace",
+            "type": "CFString"
+        },
+        "kMDItemComment": {
+            "multivalued": false,
+            "name": "kMDItemComment",
+            "type": "CFString"
+        },
+        "kMDItemComposer": {
+            "multivalued": false,
+            "name": "kMDItemComposer",
+            "type": "CFString"
+        },
+        "kMDItemContactKeywords": {
+            "multivalued": true,
+            "name": "kMDItemContactKeywords",
+            "type": "CFString"
+        },
+        "kMDItemContentCreationDate": {
+            "multivalued": false,
+            "name": "kMDItemContentCreationDate",
+            "type": "CFDate"
+        },
+        "kMDItemContentModificationDate": {
+            "multivalued": false,
+            "name": "kMDItemContentModificationDate",
+            "type": "CFDate"
+        },
+        "kMDItemContentType": {
+            "multivalued": false,
+            "name": "kMDItemContentType",
+            "nosearch": true,
+            "type": "CFString",
+            "uniqued": true
+        },
+        "kMDItemContentTypeTree": {
+            "multivalued": true,
+            "name": "kMDItemContentTypeTree",
+            "nosearch": true,
+            "type": "CFString",
+            "uniqued": true
+        },
+        "kMDItemContributors": {
+            "multivalued": true,
+            "name": "kMDItemContributors",
+            "type": "CFString"
+        },
+        "kMDItemCopyright": {
+            "multivalued": false,
+            "name": "kMDItemCopyright",
+            "type": "CFString"
+        },
+        "kMDItemCountry": {
+            "multivalued": false,
+            "name": "kMDItemCountry",
+            "type": "CFString"
+        },
+        "kMDItemCoverage": {
+            "multivalued": false,
+            "name": "kMDItemCoverage",
+            "type": "CFString"
+        },
+        "kMDItemCreator": {
+            "multivalued": false,
+            "name": "kMDItemCreator",
+            "type": "CFString"
+        },
+        "kMDItemDateAdded": {
+            "multivalued": false,
+            "name": "kMDItemDateAdded",
+            "type": "CFDate"
+        },
+        "kMDItemDeliveryType": {
+            "multivalued": false,
+            "name": "kMDItemDeliveryType",
+            "type": "CFString"
+        },
+        "kMDItemDescription": {
+            "multivalued": false,
+            "name": "kMDItemDescription",
+            "type": "CFString"
+        },
+        "kMDItemDestinationRecipients": {
+            "multivalued": true,
+            "name": "kMDItemDestinationRecipients",
+            "type": "CFString"
+        },
+        "kMDItemDirector": {
+            "multivalued": false,
+            "name": "kMDItemDirector",
+            "type": "CFString"
+        },
+        "kMDItemDisplayName": {
+            "multivalued": false,
+            "name": "kMDItemDisplayName",
+            "type": "CFString"
+        },
+        "kMDItemDocumentContainer": {
+            "multivalued": false,
+            "name": "kMDItemDocumentContainer",
+            "type": "CFString",
+            "uniqued": true
+        },
+        "kMDItemDocumentLineage": {
+            "multivalued": true,
+            "name": "kMDItemDocumentLineage",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemDueDate": {
+            "multivalued": false,
+            "name": "kMDItemDueDate",
+            "type": "CFDate"
+        },
+        "kMDItemDurationSeconds": {
+            "multivalued": false,
+            "name": "kMDItemDurationSeconds",
+            "type": "CFNumber"
+        },
+        "kMDItemEXIFGPSVersion": {
+            "multivalued": false,
+            "name": "kMDItemEXIFGPSVersion",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemEXIFVersion": {
+            "multivalued": false,
+            "name": "kMDItemEXIFVersion",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemEditors": {
+            "multivalued": true,
+            "name": "kMDItemEditors",
+            "type": "CFString"
+        },
+        "kMDItemEmailAddresses": {
+            "multivalued": true,
+            "name": "kMDItemEmailAddresses",
+            "type": "CFString"
+        },
+        "kMDItemEmailCategory": {
+            "multivalued": false,
+            "name": "kMDItemEmailCategory",
+            "nosearch": true,
+            "type": "CFString",
+            "uniqued": true
+        },
+        "kMDItemEncodingApplications": {
+            "multivalued": true,
+            "name": "kMDItemEncodingApplications",
+            "type": "CFString"
+        },
+        "kMDItemExecutableArchitectures": {
+            "multivalued": true,
+            "name": "kMDItemExecutableArchitectures",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemExecutablePlatform": {
+            "multivalued": false,
+            "name": "kMDItemExecutablePlatform",
+            "type": "CFString"
+        },
+        "kMDItemExposureMode": {
+            "multivalued": false,
+            "name": "kMDItemExposureMode",
+            "type": "CFNumber"
+        },
+        "kMDItemExposureProgram": {
+            "multivalued": false,
+            "name": "kMDItemExposureProgram",
+            "type": "CFString"
+        },
+        "kMDItemExposureTimeSeconds": {
+            "multivalued": false,
+            "name": "kMDItemExposureTimeSeconds",
+            "type": "CFNumber"
+        },
+        "kMDItemFNumber": {
+            "multivalued": false,
+            "name": "kMDItemFNumber",
+            "type": "CFNumber"
+        },
+        "kMDItemFSContentChangeDate": {
+            "multivalued": false,
+            "name": "kMDItemFSContentChangeDate",
+            "type": "CFDate"
+        },
+        "kMDItemFSCreationDate": {
+            "multivalued": false,
+            "name": "kMDItemFSCreationDate",
+            "type": "CFDate"
+        },
+        "kMDItemFSExists": {
+            "multivalued": false,
+            "name": "kMDItemFSExists",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "kMDItemFSHasCustomIcon": {
+            "multivalued": false,
+            "name": "kMDItemFSHasCustomIcon",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "kMDItemFSInvisible": {
+            "multivalued": false,
+            "name": "kMDItemFSInvisible",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "kMDItemFSIsExtensionHidden": {
+            "multivalued": false,
+            "name": "kMDItemFSIsExtensionHidden",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "kMDItemFSIsReadable": {
+            "multivalued": false,
+            "name": "kMDItemFSIsReadable",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "kMDItemFSIsStationery": {
+            "multivalued": false,
+            "name": "kMDItemFSIsStationery",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "kMDItemFSIsWriteable": {
+            "multivalued": false,
+            "name": "kMDItemFSIsWriteable",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "kMDItemFSLabel": {
+            "multivalued": false,
+            "name": "kMDItemFSLabel",
+            "type": "CFNumber"
+        },
+        "kMDItemFSName": {
+            "multivalued": false,
+            "name": "kMDItemFSName",
+            "type": "CFString"
+        },
+        "kMDItemFSNodeCount": {
+            "multivalued": false,
+            "name": "kMDItemFSNodeCount",
+            "type": "CFNumber"
+        },
+        "kMDItemFSOwnerGroupID": {
+            "multivalued": false,
+            "name": "kMDItemFSOwnerGroupID",
+            "type": "CFNumber"
+        },
+        "kMDItemFSOwnerUserID": {
+            "multivalued": false,
+            "name": "kMDItemFSOwnerUserID",
+            "type": "CFNumber"
+        },
+        "kMDItemFSSize": {
+            "multivalued": false,
+            "name": "kMDItemFSSize",
+            "type": "CFNumber"
+        },
+        "kMDItemFinderComment": {
+            "multivalued": false,
+            "name": "kMDItemFinderComment",
+            "type": "CFString"
+        },
+        "kMDItemFinderOpenDate": {
+            "multivalued": false,
+            "name": "kMDItemFinderOpenDate",
+            "type": "CFDate"
+        },
+        "kMDItemFlashOnOff": {
+            "multivalued": false,
+            "name": "kMDItemFlashOnOff",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "kMDItemFocalLength": {
+            "multivalued": false,
+            "name": "kMDItemFocalLength",
+            "type": "CFNumber"
+        },
+        "kMDItemFonts": {
+            "multivalued": true,
+            "name": "kMDItemFonts",
+            "type": "CFString"
+        },
+        "kMDItemGenre": {
+            "multivalued": false,
+            "name": "kMDItemGenre",
+            "type": "CFString"
+        },
+        "kMDItemHasAlphaChannel": {
+            "multivalued": false,
+            "name": "kMDItemHasAlphaChannel",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "kMDItemHeadline": {
+            "multivalued": false,
+            "name": "kMDItemHeadline",
+            "type": "CFString"
+        },
+        "kMDItemISOSpeed": {
+            "multivalued": false,
+            "name": "kMDItemISOSpeed",
+            "type": "CFNumber"
+        },
+        "kMDItemIdentifier": {
+            "multivalued": false,
+            "name": "kMDItemIdentifier",
+            "type": "CFString"
+        },
+        "kMDItemInformation": {
+            "multivalued": false,
+            "name": "kMDItemInformation",
+            "type": "CFString"
+        },
+        "kMDItemInstantMessageAddresses": {
+            "multivalued": true,
+            "name": "kMDItemInstantMessageAddresses",
+            "type": "CFString"
+        },
+        "kMDItemInstructions": {
+            "multivalued": false,
+            "name": "kMDItemInstructions",
+            "type": "CFString"
+        },
+        "kMDItemIsApplicationManaged": {
+            "multivalued": false,
+            "name": "kMDItemIsApplicationManaged",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "kMDItemIsGeneralMIDISequence": {
+            "multivalued": false,
+            "name": "kMDItemIsGeneralMIDISequence",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "kMDItemIsLikelyJunk": {
+            "multivalued": false,
+            "name": "kMDItemIsLikelyJunk",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "kMDItemIsQuarantined": {
+            "multivalued": false,
+            "name": "kMDItemIsQuarantined",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "kMDItemIsScreenCapture": {
+            "multivalued": false,
+            "name": "kMDItemIsScreenCapture",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "kMDItemKeySignature": {
+            "multivalued": false,
+            "name": "kMDItemKeySignature",
+            "type": "CFString"
+        },
+        "kMDItemKeywords": {
+            "multivalued": true,
+            "name": "kMDItemKeywords",
+            "type": "CFString"
+        },
+        "kMDItemKind": {
+            "multivalued": false,
+            "name": "kMDItemKind",
+            "type": "CFString",
+            "uniqued": true
+        },
+        "kMDItemLanguages": {
+            "multivalued": true,
+            "name": "kMDItemLanguages",
+            "nosearch": true,
+            "type": "CFString",
+            "uniqued": true
+        },
+        "kMDItemLastUsedDate": {
+            "multivalued": false,
+            "name": "kMDItemLastUsedDate",
+            "type": "CFDate"
+        },
+        "kMDItemLatitude": {
+            "multivalued": false,
+            "name": "kMDItemLatitude",
+            "type": "CFNumber"
+        },
+        "kMDItemLayerNames": {
+            "multivalued": true,
+            "name": "kMDItemLayerNames",
+            "type": "CFString"
+        },
+        "kMDItemLogicalSize": {
+            "multivalued": false,
+            "name": "kMDItemLogicalSize",
+            "nosearch": true,
+            "type": "CFNumber"
+        },
+        "kMDItemLongitude": {
+            "multivalued": false,
+            "name": "kMDItemLongitude",
+            "type": "CFNumber"
+        },
+        "kMDItemLyricist": {
+            "multivalued": false,
+            "name": "kMDItemLyricist",
+            "type": "CFString"
+        },
+        "kMDItemMailboxes": {
+            "multivalued": true,
+            "name": "kMDItemMailboxes",
+            "nosearch": true,
+            "type": "CFString",
+            "uniqued": true
+        },
+        "kMDItemMaxAperture": {
+            "multivalued": false,
+            "name": "kMDItemMaxAperture",
+            "type": "CFNumber"
+        },
+        "kMDItemMediaTypes": {
+            "multivalued": true,
+            "name": "kMDItemMediaTypes",
+            "type": "CFString"
+        },
+        "kMDItemMeteringMode": {
+            "multivalued": false,
+            "name": "kMDItemMeteringMode",
+            "type": "CFString"
+        },
+        "kMDItemMusicalGenre": {
+            "multivalued": false,
+            "name": "kMDItemMusicalGenre",
+            "type": "CFString"
+        },
+        "kMDItemMusicalInstrumentCategory": {
+            "multivalued": false,
+            "name": "kMDItemMusicalInstrumentCategory",
+            "type": "CFString"
+        },
+        "kMDItemMusicalInstrumentName": {
+            "multivalued": false,
+            "name": "kMDItemMusicalInstrumentName",
+            "type": "CFString"
+        },
+        "kMDItemNamedLocation": {
+            "multivalued": false,
+            "name": "kMDItemNamedLocation",
+            "type": "CFString"
+        },
+        "kMDItemNumberOfPages": {
+            "multivalued": false,
+            "name": "kMDItemNumberOfPages",
+            "type": "CFNumber"
+        },
+        "kMDItemOrganizations": {
+            "multivalued": true,
+            "name": "kMDItemOrganizations",
+            "type": "CFString"
+        },
+        "kMDItemOrientation": {
+            "multivalued": false,
+            "name": "kMDItemOrientation",
+            "type": "CFNumber"
+        },
+        "kMDItemOriginApplicationIdentifier": {
+            "multivalued": false,
+            "name": "kMDItemOriginApplicationIdentifier",
+            "nosearch": true,
+            "type": "CFString",
+            "uniqued": true
+        },
+        "kMDItemOriginMessageID": {
+            "multivalued": false,
+            "name": "kMDItemOriginMessageID",
+            "type": "CFString"
+        },
+        "kMDItemOriginSenderDisplayName": {
+            "multivalued": false,
+            "name": "kMDItemOriginSenderDisplayName",
+            "type": "CFString"
+        },
+        "kMDItemOriginSenderHandle": {
+            "multivalued": false,
+            "name": "kMDItemOriginSenderHandle",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemOriginSubject": {
+            "multivalued": false,
+            "name": "kMDItemOriginSubject",
+            "type": "CFString"
+        },
+        "kMDItemOriginalFormat": {
+            "multivalued": false,
+            "name": "kMDItemOriginalFormat",
+            "type": "CFString"
+        },
+        "kMDItemOriginalSource": {
+            "multivalued": false,
+            "name": "kMDItemOriginalSource",
+            "type": "CFString"
+        },
+        "kMDItemPageHeight": {
+            "multivalued": false,
+            "name": "kMDItemPageHeight",
+            "type": "CFNumber"
+        },
+        "kMDItemPageWidth": {
+            "multivalued": false,
+            "name": "kMDItemPageWidth",
+            "type": "CFNumber"
+        },
+        "kMDItemParticipants": {
+            "multivalued": true,
+            "name": "kMDItemParticipants",
+            "type": "CFString"
+        },
+        "kMDItemPath": {
+            "multivalued": false,
+            "name": "kMDItemPath",
+            "type": "CFString"
+        },
+        "kMDItemPerformers": {
+            "multivalued": true,
+            "name": "kMDItemPerformers",
+            "type": "CFString"
+        },
+        "kMDItemPhoneNumbers": {
+            "multivalued": true,
+            "name": "kMDItemPhoneNumbers",
+            "type": "CFString"
+        },
+        "kMDItemPhysicalSize": {
+            "multivalued": false,
+            "name": "kMDItemPhysicalSize",
+            "nosearch": true,
+            "type": "CFNumber"
+        },
+        "kMDItemPixelCount": {
+            "multivalued": false,
+            "name": "kMDItemPixelCount",
+            "type": "CFNumber"
+        },
+        "kMDItemPixelHeight": {
+            "multivalued": false,
+            "name": "kMDItemPixelHeight",
+            "type": "CFNumber"
+        },
+        "kMDItemPixelWidth": {
+            "multivalued": false,
+            "name": "kMDItemPixelWidth",
+            "type": "CFNumber"
+        },
+        "kMDItemProducer": {
+            "multivalued": false,
+            "name": "kMDItemProducer",
+            "type": "CFString"
+        },
+        "kMDItemProfileName": {
+            "multivalued": false,
+            "name": "kMDItemProfileName",
+            "type": "CFString"
+        },
+        "kMDItemProjects": {
+            "multivalued": true,
+            "name": "kMDItemProjects",
+            "type": "CFString"
+        },
+        "kMDItemPublishers": {
+            "multivalued": true,
+            "name": "kMDItemPublishers",
+            "type": "CFString"
+        },
+        "kMDItemPurchaseDate": {
+            "multivalued": false,
+            "name": "kMDItemPurchaseDate",
+            "type": "CFDate"
+        },
+        "kMDItemRecipientAddresses": {
+            "multivalued": true,
+            "name": "kMDItemRecipientAddresses",
+            "type": "CFString"
+        },
+        "kMDItemRecipientContactIdentifiers": {
+            "multivalued": true,
+            "name": "kMDItemRecipientContactIdentifiers",
+            "nosearch": true,
+            "notokenize": true,
+            "type": "CFString"
+        },
+        "kMDItemRecipientEmailAddresses": {
+            "multivalued": true,
+            "name": "kMDItemRecipientEmailAddresses",
+            "type": "CFString"
+        },
+        "kMDItemRecipients": {
+            "multivalued": true,
+            "name": "kMDItemRecipients",
+            "type": "CFString"
+        },
+        "kMDItemRecordingDate": {
+            "multivalued": false,
+            "name": "kMDItemRecordingDate",
+            "type": "CFDate"
+        },
+        "kMDItemRecordingYear": {
+            "multivalued": false,
+            "name": "kMDItemRecordingYear",
+            "type": "CFNumber"
+        },
+        "kMDItemRedEyeOnOff": {
+            "multivalued": false,
+            "name": "kMDItemRedEyeOnOff",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "kMDItemResolutionHeightDPI": {
+            "multivalued": false,
+            "name": "kMDItemResolutionHeightDPI",
+            "type": "CFNumber"
+        },
+        "kMDItemResolutionWidthDPI": {
+            "multivalued": false,
+            "name": "kMDItemResolutionWidthDPI",
+            "type": "CFNumber"
+        },
+        "kMDItemRights": {
+            "multivalued": false,
+            "name": "kMDItemRights",
+            "type": "CFString"
+        },
+        "kMDItemScreenCaptureType": {
+            "multivalued": false,
+            "name": "kMDItemScreenCaptureType",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemSecurityMethod": {
+            "multivalued": false,
+            "name": "kMDItemSecurityMethod",
+            "type": "CFString"
+        },
+        "kMDItemStarRating": {
+            "multivalued": false,
+            "name": "kMDItemStarRating",
+            "type": "CFNumber"
+        },
+        "kMDItemStateOrProvince": {
+            "multivalued": false,
+            "name": "kMDItemStateOrProvince",
+            "type": "CFString"
+        },
+        "kMDItemStreamable": {
+            "multivalued": false,
+            "name": "kMDItemStreamable",
+            "nosearch": true,
+            "type": "CFBoolean"
+        },
+        "kMDItemSubject": {
+            "multivalued": false,
+            "name": "kMDItemSubject",
+            "type": "CFString"
+        },
+        "kMDItemSupportFileType": {
+            "multivalued": true,
+            "name": "kMDItemSupportFileType",
+            "nosearch": true,
+            "type": "CFString",
+            "uniqued": true
+        },
+        "kMDItemTempo": {
+            "multivalued": false,
+            "name": "kMDItemTempo",
+            "type": "CFNumber"
+        },
+        "kMDItemTextContent": {
+            "multivalued": false,
+            "name": "kMDItemTextContent",
+            "type": "CFString"
+        },
+        "kMDItemTheme": {
+            "multivalued": false,
+            "name": "kMDItemTheme",
+            "type": "CFString"
+        },
+        "kMDItemTimeSignature": {
+            "multivalued": false,
+            "name": "kMDItemTimeSignature",
+            "type": "CFString"
+        },
+        "kMDItemTitle": {
+            "multivalued": false,
+            "name": "kMDItemTitle",
+            "type": "CFString"
+        },
+        "kMDItemTotalBitRate": {
+            "multivalued": false,
+            "name": "kMDItemTotalBitRate",
+            "type": "CFNumber"
+        },
+        "kMDItemURL": {
+            "multivalued": false,
+            "name": "kMDItemURL",
+            "type": "CFString"
+        },
+        "kMDItemUsedDates": {
+            "multivalued": true,
+            "name": "kMDItemUsedDates",
+            "type": "CFDate"
+        },
+        "kMDItemUserCreatedDate": {
+            "multivalued": true,
+            "name": "kMDItemUserCreatedDate",
+            "nosearch": true,
+            "type": "CFDate"
+        },
+        "kMDItemUserCreatedUserHandle": {
+            "multivalued": true,
+            "name": "kMDItemUserCreatedUserHandle",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemUserDownloadedDate": {
+            "multivalued": true,
+            "name": "kMDItemUserDownloadedDate",
+            "nosearch": true,
+            "type": "CFDate"
+        },
+        "kMDItemUserDownloadedUserHandle": {
+            "multivalued": true,
+            "name": "kMDItemUserDownloadedUserHandle",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemUserModifiedDate": {
+            "multivalued": true,
+            "name": "kMDItemUserModifiedDate",
+            "nosearch": true,
+            "type": "CFDate"
+        },
+        "kMDItemUserModifiedUserHandle": {
+            "multivalued": true,
+            "name": "kMDItemUserModifiedUserHandle",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemUserPrintedDate": {
+            "multivalued": true,
+            "name": "kMDItemUserPrintedDate",
+            "nosearch": true,
+            "type": "CFDate"
+        },
+        "kMDItemUserPrintedUserHandle": {
+            "multivalued": true,
+            "name": "kMDItemUserPrintedUserHandle",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemUserSharedReceivedDate": {
+            "multivalued": true,
+            "name": "kMDItemUserSharedReceivedDate",
+            "nosearch": true,
+            "type": "CFDate"
+        },
+        "kMDItemUserSharedReceivedRecipient": {
+            "multivalued": true,
+            "name": "kMDItemUserSharedReceivedRecipient",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemUserSharedReceivedRecipientHandle": {
+            "multivalued": true,
+            "name": "kMDItemUserSharedReceivedRecipientHandle",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemUserSharedReceivedSender": {
+            "multivalued": true,
+            "name": "kMDItemUserSharedReceivedSender",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemUserSharedReceivedSenderHandle": {
+            "multivalued": true,
+            "name": "kMDItemUserSharedReceivedSenderHandle",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemUserSharedReceivedTransport": {
+            "multivalued": true,
+            "name": "kMDItemUserSharedReceivedTransport",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemUserSharedSentDate": {
+            "multivalued": true,
+            "name": "kMDItemUserSharedSentDate",
+            "nosearch": true,
+            "type": "CFDate"
+        },
+        "kMDItemUserSharedSentRecipient": {
+            "multivalued": true,
+            "name": "kMDItemUserSharedSentRecipient",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemUserSharedSentRecipientHandle": {
+            "multivalued": true,
+            "name": "kMDItemUserSharedSentRecipientHandle",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemUserSharedSentSender": {
+            "multivalued": true,
+            "name": "kMDItemUserSharedSentSender",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemUserSharedSentSenderHandle": {
+            "multivalued": true,
+            "name": "kMDItemUserSharedSentSenderHandle",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemUserSharedSentTransport": {
+            "multivalued": true,
+            "name": "kMDItemUserSharedSentTransport",
+            "nosearch": true,
+            "type": "CFString"
+        },
+        "kMDItemUserTags": {
+            "multivalued": true,
+            "name": "kMDItemUserTags",
+            "nosearch": true,
+            "type": "CFString",
+            "uniqued": true
+        },
+        "kMDItemVersion": {
+            "multivalued": false,
+            "name": "kMDItemVersion",
+            "type": "CFString"
+        },
+        "kMDItemVideoBitRate": {
+            "multivalued": false,
+            "name": "kMDItemVideoBitRate",
+            "type": "CFNumber"
+        },
+        "kMDItemWhereFroms": {
+            "multivalued": true,
+            "name": "kMDItemWhereFroms",
+            "type": "CFString"
+        },
+        "kMDItemWhiteBalance": {
+            "multivalued": false,
+            "name": "kMDItemWhiteBalance",
+            "type": "CFNumber"
+        }
+    },
+    "Types": {
+        "com.adobe.pdf": {
+            "allattrs": [
+                "kMDItemVersion",
+                "kMDItemTitle",
+                "kMDItemAuthors",
+                "kMDItemDescription",
+                "kMDItemCreator",
+                "kMDItemEncodingApplications",
+                "kMDItemKeywords",
+                "kMDItemNumberOfPages",
+                "kMDItemPageWidth",
+                "kMDItemPageHeight",
+                "kMDItemSecurityMethod"
+            ],
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemAuthors",
+                "kMDItemDescription",
+                "kMDItemVersion",
+                "kMDItemNumberOfPages",
+                "kMDItemPageWidth",
+                "kMDItemPageHeight",
+                "kMDItemSecurityMethod",
+                "kMDItemCreator",
+                "kMDItemEncodingApplications"
+            ],
+            "name": "com.adobe.pdf",
+            "readonlyattrs": [
+                "kMDItemVersion",
+                "kMDItemCreator",
+                "kMDItemEncodingApplications",
+                "kMDItemNumberOfPages",
+                "kMDItemPageWidth",
+                "kMDItemPageHeight",
+                "kMDItemSecurityMethod"
+            ],
+            "relatedattrs": [
+                "kMDItemAuthors"
+            ]
+        },
+        "com.apple.addressbook.group": {
+            "allattrs": [
+                "kMDItemTitle"
+            ],
+            "displayattrs": [
+                "kMDItemTitle"
+            ],
+            "name": "com.apple.addressbook.group"
+        },
+        "com.apple.addressbook.person": {
+            "allattrs": [
+                "kMDItemCity",
+                "kMDItemCountry",
+                "kMDItemEmailAddresses",
+                "kMDItemInstantMessageAddresses",
+                "kMDItemPhoneNumbers",
+                "kMDItemStateOrProvince",
+                "kMDItemTitle"
+            ],
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemPhoneNumbers",
+                "kMDItemEmailAddresses",
+                "kMDItemInstantMessageAddresses"
+            ],
+            "relatedattrs": [
+                "kMDItemPhoneNumbers",
+                "kMDItemEmailAddresses"
+            ]
+        },
+        "com.apple.application": {
+            "allattrs": [
+                "kMDItemCopyright",
+                "kMDItemVersion"
+            ],
+            "name": "com.apple.application",
+            "previewattrs": [
+                "kMDItemLastUsedDate"
+            ],
+            "readonlyattrs": [
+                "kMDItemCopyright",
+                "kMDItemVersion"
+            ]
+        },
+        "com.apple.bundle": {
+            "allattrs": [
+                "kMDItemCFBundleIdentifier"
+            ],
+            "name": "com.apple.bundle",
+            "readonlyattrs": [
+                "kMDItemCFBundleIdentifier"
+            ]
+        },
+        "com.apple.ical.bookmark": {
+            "allattrs": [
+                "kMDItemDisplayName",
+                "kMDItemTitle",
+                "kMDItemCoverage",
+                "kMDItemWhereFroms",
+                "kMDItemAuthors",
+                "kMDItemContactKeywords",
+                "kMDItemComment",
+                "kMDItemDueDate"
+            ],
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemCoverage",
+                "kMDItemWhereFroms",
+                "kMDItemAuthors",
+                "kMDItemContactKeywords",
+                "kMDItemDueDate"
+            ],
+            "name": "com.apple.ical.bookmark",
+            "relatedattrs": [
+                "kMDItemAuthors",
+                "kMDItemDueDate"
+            ]
+        },
+        "com.apple.ical.bookmark.todo": {
+            "allattrs": [
+                "kMDItemDisplayName",
+                "kMDItemCoverage",
+                "kMDItemTitle",
+                "kMDItemWhereFroms",
+                "kMDItemAuthors",
+                "kMDItemContactKeywords",
+                "kMDItemComment",
+                "kMDItemDueDate"
+            ],
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemCoverage",
+                "kMDItemWhereFroms",
+                "kMDItemAuthors",
+                "kMDItemContactKeywords",
+                "kMDItemDueDate"
+            ],
+            "name": "com.apple.ical.bookmark.todo",
+            "relatedattrs": [
+                "kMDItemAuthors",
+                "kMDItemDueDate"
+            ]
+        },
+        "com.apple.ichat.transcript": {
+            "allattrs": [
+                "kMDItemAuthors",
+                "kMDItemContentCreationDate",
+                "kMDItemDeliveryType",
+                "kMDItemDurationSeconds",
+                "kMDItemInstantMessageAddresses",
+                "kMDItemCoverage"
+            ],
+            "displayattrs": [
+                "kMDItemAuthors",
+                "kMDItemCoverage",
+                "kMDItemContentCreationDate",
+                "kMDItemDeliveryType",
+                "kMDItemDurationSeconds",
+                "kMDItemInstantMessageAddresses"
+            ],
+            "name": "com.apple.ichat.transcript"
+        },
+        "com.apple.itunes-producer.itmsp": {
+            "allattrs": [
+                "MZItemIdentifiers",
+                "MZItemTitles"
+            ],
+            "displayattrs": [
+                "MZItemIdentifiers",
+                "MZItemTitles"
+            ],
+            "name": "com.apple.itunes-producer.itmsp"
+        },
+        "com.apple.keynote.key": {
+            "allattrs": [
+                "kMDItemTitle",
+                "kMDItemKeywords",
+                "kMDItemAuthors",
+                "kMDItemComment"
+            ],
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemKeywords",
+                "kMDItemAuthors",
+                "kMDItemComment"
+            ],
+            "name": "com.apple.keynote.key"
+        },
+        "com.apple.mail.emlx": {
+            "allattrs": [
+                "kMDItemTitle",
+                "kMDItemAuthors",
+                "kMDItemContentCreationDate",
+                "kMDItemAuthorEmailAddresses",
+                "kMDItemRecipients",
+                "kMDItemRecipientEmailAddresses"
+            ],
+            "displayattrs": [
+                "kMDItemContentCreationDate",
+                "kMDItemAuthors",
+                "kMDItemRecipients"
+            ],
+            "name": "com.apple.mail.emlx",
+            "readonlyattrs": [
+                "kMDItemTitle",
+                "kMDItemAuthors",
+                "kMDItemContentCreationDate",
+                "kMDItemAuthorEmailAddresses",
+                "kMDItemRecipients",
+                "kMDItemRecipientEmailAddresses"
+            ]
+        },
+        "com.apple.quartz-composer-composition": {
+            "name": "com.apple.quartz-composer-composition"
+        },
+        "com.apple.rtfd": {
+            "allattrs": [
+                "kMDItemCopyright",
+                "kMDItemTitle",
+                "kMDItemSubject",
+                "kMDItemOrganizations",
+                "kMDItemAuthors",
+                "kMDItemKeywords",
+                "kMDItemComment",
+                "kMDItemContentCreationDate",
+                "kMDItemContentModificationDate"
+            ],
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemSubject",
+                "kMDItemOrganizations",
+                "kMDItemAuthors",
+                "kMDItemKeywords",
+                "kMDItemComment",
+                "kMDItemContentCreationDate",
+                "kMDItemContentModificationDate"
+            ],
+            "exporterAvailable": true
+        },
+        "com.apple.safari.bookmark": {
+            "allattrs": [
+                "kMDItemURL"
+            ],
+            "displayattrs": [
+                "kMDItemURL"
+            ],
+            "name": "com.apple.safari.bookmark",
+            "relatedattrs": [
+                "kMDItemURL"
+            ]
+        },
+        "com.apple.systempreference.prefpane": {
+            "allattrs": [
+                "kMDItemDisplayName"
+            ],
+            "name": "com.apple.systempreference.prefpane"
+        },
+        "com.apple.traditional-mac-plain-text": {
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemSubject",
+                "kMDItemOrganizations",
+                "kMDItemAuthors",
+                "kMDItemKeywords",
+                "kMDItemComment"
+            ],
+            "name": "com.apple.traditional-mac-plain-text"
+        },
+        "com.apple.webarchive": {
+            "allattrs": [
+                "kMDItemTitle",
+                "kMDItemSubject",
+                "kMDItemOrganizations",
+                "kMDItemAuthors",
+                "kMDItemKeywords",
+                "kMDItemComment",
+                "kMDItemContentCreationDate",
+                "kMDItemContentModificationDate"
+            ],
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemSubject",
+                "kMDItemOrganizations",
+                "kMDItemAuthors",
+                "kMDItemKeywords",
+                "kMDItemComment",
+                "kMDItemContentCreationDate",
+                "kMDItemContentModificationDate"
+            ],
+            "name": "com.apple.webarchive"
+        },
+        "com.apple.xcode.dsym": {
+            "allattrs": [
+                "com_apple_xcode_dsym_uuids",
+                "com_apple_xcode_dsym_paths"
+            ],
+            "displayattrs": [
+                "com_apple_xcode_dsym_uuids"
+            ],
+            "name": "com.apple.xcode.dsym"
+        },
+        "com.microsoft.excel.xls": {
+            "allattrs": [
+                "kMDItemTitle",
+                "kMDItemAuthors",
+                "kMDItemComment"
+            ],
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemAuthors",
+                "kMDItemComment"
+            ],
+            "name": "com.microsoft.excel.xls"
+        },
+        "com.microsoft.word.doc": {
+            "allattrs": [
+                "kMDItemTitle",
+                "kMDItemSubject",
+                "kMDItemAuthors",
+                "kMDItemComment"
+            ],
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemSubject",
+                "kMDItemAuthors",
+                "kMDItemComment"
+            ],
+            "name": "com.microsoft.word.doc"
+        },
+        "public.audio": {
+            "allattrs": [
+                "kMDItemAlbum",
+                "kMDItemAuthors",
+                "kMDItemComposer",
+                "kMDItemMusicalGenre",
+                "kMDItemRecordingDate",
+                "kMDItemRecordingYear",
+                "kMDItemTitle",
+                "kMDItemComment",
+                "kMDItemMediaTypes",
+                "kMDItemTotalBitRate",
+                "kMDItemAudioBitRate",
+                "kMDItemAudioSampleRate",
+                "kMDItemBitsPerSample",
+                "kMDItemKeySignature",
+                "kMDItemTimeSignature",
+                "kMDItemAudioEncodingApplication",
+                "kMDItemLyricist",
+                "kMDItemAudioTrackNumber",
+                "kMDItemMusicalInstrumentCategory",
+                "kMDItemMusicalInstrumentName",
+                "kMDItemAppleLoopDescriptors",
+                "kMDItemAppleLoopsRootKey",
+                "kMDItemAppleLoopsKeyFilterType",
+                "kMDItemAppleLoopsLoopMode"
+            ],
+            "displayattrs": [
+                "kMDItemAlbum",
+                "kMDItemTitle",
+                "kMDItemMusicalGenre",
+                "kMDItemRecordingDate",
+                "kMDItemAuthors",
+                "kMDItemComposer",
+                "kMDItemRecordingYear",
+                "kMDItemComment",
+                "kMDItemAudioSampleRate",
+                "kMDItemBitsPerSample"
+            ],
+            "name": "public.audio",
+            "previewattrs": [
+                "kMDItemDurationSeconds",
+                "kMDItemAudioSampleRate",
+                "kMDItemBitsPerSample",
+                "kMDItemLastUsedDate"
+            ],
+            "readonlyattrs": [
+                "kMDItemDurationSeconds",
+                "kMDItemTotalBitRate",
+                "kMDItemAudioBitRate",
+                "kMDItemAudioEncodingApplication",
+                "kMDItemAudioSampleRate",
+                "kMDItemBitsPerSample",
+                "kMDItemMusicalInstrumentCategory",
+                "kMDItemMusicalInstrumentName",
+                "kMDItemAppleLoopDescriptors",
+                "kMDItemAppleLoopsRootKey",
+                "kMDItemAppleLoopsKeyFilterType",
+                "kMDItemAppleLoopsLoopMode"
+            ],
+            "relatedattrs": [
+                "kMDItemAlbum",
+                "kMDItemAuthors"
+            ]
+        },
+        "public.audiovisual-content": {
+            "allattrs": [
+                "kMDItemAudioChannelCount",
+                "kMDItemAuthors",
+                "kMDItemCodecs",
+                "kMDItemCopyright",
+                "kMDItemDurationSeconds",
+                "kMDItemEncodingApplications",
+                "kMDItemPixelHeight",
+                "kMDItemPixelWidth",
+                "kMDItemStarRating",
+                "kMDItemTitle",
+                "kMDItemTotalBitRate",
+                "kMDItemAudioSampleRate",
+                "kMDItemBitsPerSample",
+                "kMDItemInformation",
+                "kMDItemDirector",
+                "kMDItemProducer",
+                "kMDItemGenre",
+                "kMDItemPerformers",
+                "kMDItemOriginalFormat",
+                "kMDItemOriginalSource"
+            ],
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemPixelHeight",
+                "kMDItemPixelWidth",
+                "kMDItemDurationSeconds",
+                "kMDItemAuthors",
+                "kMDItemPerformers",
+                "kMDItemDirector",
+                "kMDItemProducer",
+                "kMDItemGenre",
+                "kMDItemCopyright",
+                "kMDItemAudioChannelCount",
+                "kMDItemAudioSampleRate",
+                "kMDItemBitsPerSample",
+                "kMDItemCodecs",
+                "kMDItemEncodingApplications",
+                "kMDItemOriginalFormat",
+                "kMDItemOriginalSource",
+                "kMDItemStarRating",
+                "kMDItemInformation"
+            ],
+            "name": "public.audiovisual-content",
+            "readonlyattrs": [
+                "kMDItemAudioChannelCount",
+                "kMDItemCodecs",
+                "kMDItemDurationSeconds",
+                "kMDItemPixelHeight",
+                "kMDItemPixelWidth",
+                "kMDItemTotalBitRate",
+                "kMDItemAudioSampleRate",
+                "kMDItemBitsPerSample"
+            ]
+        },
+        "public.bookmark": {
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemPhoneNumbers",
+                "kMDItemEmailAddresses",
+                "kMDItemInstantMessageAddresses"
+            ],
+            "name": "public.bookmark"
+        },
+        "public.calendar-event": {
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemCoverage",
+                "kMDItemWhereFroms",
+                "kMDItemAuthors",
+                "kMDItemContactKeywords",
+                "kMDItemDueDate"
+            ],
+            "name": "public.calendar-event"
+        },
+        "public.contact": {
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemPhoneNumbers",
+                "kMDItemEmailAddresses",
+                "kMDItemInstantMessageAddresses"
+            ],
+            "name": "public.contact"
+        },
+        "public.email-message": {
+            "displayattrs": [
+                "kMDItemContentCreationDate",
+                "kMDItemAuthors",
+                "kMDItemRecipients"
+            ],
+            "name": "public.email-message"
+        },
+        "public.font": {
+            "allattrs": [
+                "kMDItemAuthors",
+                "kMDItemCopyright",
+                "kMDItemFonts"
+            ],
+            "name": "public.font",
+            "previewattrs": [
+                "kMDItemLastUsedDate"
+            ],
+            "relatedattrs": [
+                "kMDItemCopyright"
+            ]
+        },
+        "public.html": {
+            "allattrs": [
+                "kMDItemTitle",
+                "kMDItemSubject",
+                "kMDItemOrganizations",
+                "kMDItemAuthors",
+                "kMDItemKeywords",
+                "kMDItemComment",
+                "kMDItemContentCreationDate",
+                "kMDItemContentModificationDate"
+            ],
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemSubject",
+                "kMDItemOrganizations",
+                "kMDItemAuthors",
+                "kMDItemKeywords",
+                "kMDItemComment",
+                "kMDItemContentCreationDate",
+                "kMDItemContentModificationDate"
+            ],
+            "name": "public.html"
+        },
+        "public.image": {
+            "allattrs": [
+                "kMDItemAcquisitionMake",
+                "kMDItemAcquisitionModel",
+                "kMDItemAlbum",
+                "kMDItemAperture",
+                "kMDItemCity",
+                "kMDItemColorSpace",
+                "kMDItemColorSpace",
+                "kMDItemCountry",
+                "kMDItemDescription",
+                "kMDItemEXIFVersion",
+                "kMDItemExposureMode",
+                "kMDItemExposureProgram",
+                "kMDItemExposureTimeSeconds",
+                "kMDItemFNumber",
+                "kMDItemFlashOnOff",
+                "kMDItemFocalLength",
+                "kMDItemHasAlphaChannel",
+                "kMDItemHeadline",
+                "kMDItemISOSpeed",
+                "kMDItemInstructions",
+                "kMDItemKeywords",
+                "kMDItemLayerNames",
+                "kMDItemMaxAperture",
+                "kMDItemMeteringMode",
+                "kMDItemOrientation",
+                "kMDItemPixelHeight",
+                "kMDItemPixelWidth",
+                "kMDItemProfileName",
+                "kMDItemRedEyeOnOff",
+                "kMDItemResolutionHeightDPI",
+                "kMDItemResolutionWidthDPI",
+                "kMDItemStateOrProvince",
+                "kMDItemTitle",
+                "kMDItemWhiteBalance",
+                "kMDItemEXIFGPSVersion",
+                "kMDItemAltitude",
+                "kMDItemLatitude",
+                "kMDItemLongitude",
+                "kMDItemNamedLocation"
+            ],
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemPixelHeight",
+                "kMDItemPixelWidth",
+                "kMDItemAcquisitionMake",
+                "kMDItemAcquisitionModel",
+                "kMDItemColorSpace",
+                "kMDItemProfileName",
+                "kMDItemFocalLength",
+                "kMDItemLayerNames",
+                "kMDItemAlbum",
+                "kMDItemDescription",
+                "kMDItemHasAlphaChannel",
+                "kMDItemRedEyeOnOff",
+                "kMDItemMeteringMode",
+                "kMDItemMaxAperture",
+                "kMDItemFNumber",
+                "kMDItemExposureProgram",
+                "kMDItemExposureTimeSeconds",
+                "kMDItemHeadline",
+                "kMDItemInstructions",
+                "kMDItemNamedLocation",
+                "kMDItemCity",
+                "kMDItemStateOrProvince",
+                "kMDItemCountry",
+                "kMDItemLatitude",
+                "kMDItemLongitude"
+            ],
+            "name": "public.image",
+            "previewattrs": [
+                "kMDItemPixelHeight",
+                "kMDItemPixelWidth",
+                "kMDItemLastUsedDate"
+            ],
+            "readonlyattrs": [
+                "kMDItemPixelHeight",
+                "kMDItemPixelWidth",
+                "kMDItemResolutionWidthDPI",
+                "kMDItemResolutionHeightDPI"
+            ],
+            "relatedattrs": [
+                "kMDItemAuthors",
+                "kMDItemPixelHeight",
+                "kMDItemPixelWidth"
+            ]
+        },
+        "public.item": {
+            "displayattrs": [
+                "kMDItemKeywords",
+                "kMDItemWhereFroms",
+                "kMDItemLastUsedDate"
+            ],
+            "name": "public.item",
+            "previewattrs": [
+                "kMDItemLastUsedDate"
+            ],
+            "readonlyattrs": [
+                "kMDItemPath",
+                "kMDItemAttributeChangeDate",
+                "kMDItemContentType",
+                "kMDItemContentTypeTree",
+                "kMDItemDisplayName",
+                "kMDItemKind",
+                "kMDItemLastUsedDate",
+                "kMDItemTextContent"
+            ],
+            "relatedattrs": [
+                "kMDItemKeywords"
+            ]
+        },
+        "public.movie": {
+            "allattrs": [
+                "kMDItemAcquisitionMake",
+                "kMDItemAcquisitionModel",
+                "kMDItemAudioBitRate",
+                "kMDItemCodecs",
+                "kMDItemColorSpace",
+                "kMDItemDeliveryType",
+                "kMDItemLayerNames",
+                "kMDItemMediaTypes",
+                "kMDItemPixelHeight",
+                "kMDItemPixelWidth",
+                "kMDItemStreamable",
+                "kMDItemTotalBitRate",
+                "kMDItemVideoBitRate",
+                "kMDItemProfileName"
+            ],
+            "displayattrs": [
+                "kMDItemPixelHeight",
+                "kMDItemPixelWidth",
+                "kMDItemCodecs",
+                "kMDItemProfileName"
+            ],
+            "name": "public.movie",
+            "previewattrs": [
+                "kMDItemPixelHeight",
+                "kMDItemPixelWidth",
+                "kMDItemDurationSeconds",
+                "kMDItemLastUsedDate"
+            ],
+            "readonlyattrs": [
+                "kMDItemPixelHeight",
+                "kMDItemPixelWidth",
+                "kMDItemDurationSeconds"
+            ],
+            "relatedattrs": [
+                "kMDItemCopyright",
+                "kMDItemAuthors",
+                "kMDItemTitle"
+            ]
+        },
+        "public.plain-text": {
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemSubject",
+                "kMDItemOrganizations",
+                "kMDItemAuthors",
+                "kMDItemEditors",
+                "kMDItemKeywords",
+                "kMDItemComment"
+            ],
+            "name": "public.plain-text"
+        },
+        "public.rtf": {
+            "allattrs": [
+                "kMDItemCopyright",
+                "kMDItemTitle",
+                "kMDItemSubject",
+                "kMDItemOrganizations",
+                "kMDItemAuthors",
+                "kMDItemKeywords",
+                "kMDItemComment",
+                "kMDItemContentCreationDate",
+                "kMDItemContentModificationDate"
+            ],
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemSubject",
+                "kMDItemOrganizations",
+                "kMDItemAuthors",
+                "kMDItemKeywords",
+                "kMDItemComment",
+                "kMDItemContentCreationDate",
+                "kMDItemContentModificationDate"
+            ],
+            "exporterAvailable": true,
+            "name": "public.rtf",
+            "relatedattrs": [
+                "kMDItemOrganizations",
+                "kMDItemAuthors"
+            ]
+        },
+        "public.to-do-item": {
+            "displayattrs": [
+                "kMDItemTitle",
+                "kMDItemCoverage",
+                "kMDItemWhereFroms",
+                "kMDItemAuthors",
+                "kMDItemContactKeywords",
+                "kMDItemDueDate"
+            ],
+            "name": "public.to-do-item"
+        },
+        "relatedattrs": [
+            "kMDItemOrganizations",
+            "kMDItemAuthors"
+        ]
+    },
+    "version": "1.0",
+    "xmlns": "http://www.apple.com/metadata",
+    "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "xsi:schemaLocation": "http://www.apple.com/metadata file:///System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Resources/MetadataSchema.xsd"
+}
