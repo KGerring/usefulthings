@@ -84,7 +84,7 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
-
+today_fmt = '%Y-%m-%dT%H:%M:%S'
 # -- Options for HTML output ----------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -107,7 +107,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'ImportantThingsdoc'
+htmlhelp_basename = 'usefulthingsdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------

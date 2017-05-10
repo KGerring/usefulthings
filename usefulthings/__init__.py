@@ -3,11 +3,16 @@
 __version__ = '0.1.0'
 __author__ = 'Kristen Gerring <kgerring@gmail.com>'
 __all__ = []
+#kMDItemFSContentChangeDate >= "$time.this_week"
+"(kMDItemKind = \"Python Script\")"
+'(kMDItemContentType = "public.python-script") && (kMDItemContentCreationDate >= "$time.this_week")'
+
+
 
 import usefulthings.backup_stuff
 import usefulthings.bitly
 import usefulthings.datetime_stuff
-import usefulthings.fix_old
+import usefulthings.fix_old #--config=<file>
 #import usefulthings.osx_tags
 import usefulthings.log
 import usefulthings.config_parser
@@ -28,6 +33,8 @@ import usefulthings.log
 import usefulthings.logbook_stuff
 import usefulthings.manpages
 import usefulthings.mdls
+import usefulthings.rst_stuff
+
 #import usefulthings.osx_tags
 #import usefulthings.rabbitmq_pika
 #import usefulthings.scheduler
