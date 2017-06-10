@@ -11,7 +11,7 @@ __all__ = []
 
 import usefulthings.backup_stuff
 import usefulthings.bitly
-import usefulthings.datetime_stuff
+#import usefulthings.datetime_stuff
 import usefulthings.fix_old #--config=<file>
 #import usefulthings.osx_tags
 import usefulthings.log
@@ -24,7 +24,7 @@ import usefulthings
 import usefulthings.backup_stuff
 import usefulthings.bitly
 import usefulthings.config_parser
-import usefulthings.datetime_stuff
+#import usefulthings.datetime_stuff
 import usefulthings.fix_old
 import usefulthings.github_stuff
 import usefulthings.github_stuff.github
@@ -33,7 +33,7 @@ import usefulthings.log
 import usefulthings.logbook_stuff
 import usefulthings.manpages
 import usefulthings.mdls
-import usefulthings.rst_stuff
+#import usefulthings.rst_stuff
 
 #import usefulthings.osx_tags
 #import usefulthings.rabbitmq_pika
