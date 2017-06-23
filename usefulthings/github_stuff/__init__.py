@@ -32,6 +32,7 @@ try:
 	from startups import *
 except ImportError:
 	pass
+from operator import methodcaller, attrgetter, itemgetter
 
 from github3.git import Blob, Commit, GitData, Hash, Reference, Tag, Tree
 from github3.pulls import PullRequest, PullFile, PullDestination, ReviewComment
@@ -322,10 +323,55 @@ def iterate(json_data):
 	return urls
 			
 
+def gitrepository(github=None, repository=None):
+	if not github:
+		github =get_github()
+	me = github.me()
+	username = me.login
+	url = github._build_url('repos', owner=username, repository=repository)
+	json_data = github._json(github._get(url), 200)
+	result= github._instance_or_null(GitRepository, json_data)
+	result.github = github
+	return result
+
+
+
 
 
 class GitRepository(Repository):
-	
+
+	github = None
+
+	def ensure_github(self):
+		if not self.github:
+			self.github = get_github()
+		return self.github
+
+	@classmethod
+	def from_json_data(cls, owner, name, github):
+		github = github
+
+		url = github._build_url('repos', owner, repository)
+		json_data = github._json(github._get(url), 200)
+		result= github._instance_or_null(cls, json_data)
+		return result
+
+	def call_iterator(self, name='refs', params= None, return_as=list):
+		if not params:
+			caller = methodcaller(name)
+		else:
+			caller = methodcaller(name, **params)
+		
+		iterator = caller.__call__(self)
+		result = return_as(iterator)
+		if result:
+			return result
+		else:
+			github = self.ensure_github()
+			iterator = caller.__call__(github)
+			result = return_as(iterator)
+			return result
+
 	
 	def path_contents(self, path='', ref='master', return_as=dict):
 		from github3.repos.contents import Contents
