@@ -89,7 +89,7 @@ def _parse_duration(datestring):
 	The '-' is optional.
 	Limitations:  ISO standard defines some restrictions about where to use
 	  fractional numbers and which component and format combinations are
-	  allowed. This parser implementation ignores all those restrictions and
+	  allowed. This _base implementation ignores all those restrictions and
 	  returns something when it is able to find all necessary components.
 	  In detail:
 		it does not check, whether only the last component has fractions.

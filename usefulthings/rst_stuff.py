@@ -7,7 +7,7 @@ import sys, os
 __path__ = os.path.dirname(__file__)
 
 from requests import get
-from pyfetcher.xpath import XPathExpr, JQueryTranslator, get_node_text, render_html, fromstring, make_tree, prepare_url as _prepare_url
+from pyfetcher.xpathlexer import XPathExpr, JQueryTranslator, get_node_text, render_html, fromstring, make_tree, prepare_url as _prepare_url
 from pyquery.cssselectpatch import JQueryTranslator
 from pathlib import Path
 from string import Formatter

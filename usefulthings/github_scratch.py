@@ -35,7 +35,7 @@ _tt= subprocess.Popen(
 		['gfind', '.', '-type', 'd', '-path', './proj/mdls/[!.]*', '-regextype', 'posix-egrep', '-printf', '%P\\0'],
 		shell=0, stdout=-1, universal_newlines=True, cwd='/Users/kristen/PycharmProjects').communicate()[0]
 
-#import mdls.mixins.base
+#import mdls.mixins._base
 
 
 re_null = re.compile("'\(null\)'")
@@ -162,10 +162,10 @@ def iterate_all_files(self, initial_path='', ref='master'):
 	contents.pop('__docs__')
 	return contents
 
+from os.path import join
 
 
-
-cr = create_file#'(self, path, message, content, branch=None,  committer=None, author=None)'
+#cr = create_file#'(self, path, message, content, branch=None,  committer=None, author=None)'
 	#json = self._json(self._put(url, data=dumps(data)), 201)
 #'%a, %d %b %Y %T %Z'
 TIMEFMT = '%a, %d %b %Y %H:%M:%S %Z'
@@ -177,14 +177,18 @@ TIMEFMT = '%a, %d %b %Y %H:%M:%S %Z'
 topdown=True
 followlinks=True
 
-from subprocess import check_call, STDOUT
-from tempfile import NamedTemporaryFile
+#todo unconditional decode cmds
+def temporary_context_call(*args):
+	from subprocess import check_call, STDOUT
+	from tempfile import NamedTemporaryFile
 
-with NamedTemporaryFile() as f:
-	check_call(['ls', '-l'], stdout=f, stderr=STDOUT)
-	f.seek(0)
-	output = f.read()
-
+	with NamedTemporaryFile() as f:
+		check_call(args, stdout=f, stderr=STDOUT)
+		f.seek(0)
+		output = f.read()
+		
+	return output
+	
 
 	
 	

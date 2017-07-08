@@ -128,18 +128,14 @@ def process_all_users(self):
 	users = [(pythonize(user.name), user) for user in self.getAllUsers()]
 	return AttrDict(users)
 
-
-
-
-
-
-
-
-
-
-
-
-
+def get_facebook():
+	key = get_keychain()
+	email = key.get('facebook', 'email')
+	password = key.get('facebook', 'password')
+	client = fbchat.client.Client(email, password)
+	if client.password:
+		client.password = '******'
+	return client
 
 
 if __name__ == '__main__': print(__file__)

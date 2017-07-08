@@ -216,7 +216,7 @@ class MultiConfigParser(RawConfigParser):
 		default).
 
 		Values can span multiple lines, as long as they are indented deeper
-		than the first line of the value. Depending on the parser's mode, blank
+		than the first line of the value. Depending on the _base's mode, blank
 		lines may be treated as parts of multiline values or ignored.
 
 		Configuration files may include comments, prefixed by specific
@@ -381,7 +381,7 @@ def _read(self, fp, fpname, strict=None, rSECTRE='\[(?P<header>[^]]+)\]'):
 	default).
 
 	Values can span multiple lines, as long as they are indented deeper
-	than the first line of the value. Depending on the parser's mode, blank
+	than the first line of the value. Depending on the _base's mode, blank
 	lines may be treated as parts of multiline values or ignored.
 
 	Configuration files may include comments, prefixed by specific
@@ -722,7 +722,7 @@ class MultiRawConfigParser(MutableMapping):
 		"""Deprecated, use read_file instead."""
 		warnings.warn(
 				"This method will be removed in future versions.  "
-				"Use 'parser.read_file()' instead.",
+				"Use '_base.read_file()' instead.",
 				DeprecationWarning, stacklevel=2
 		)
 		self.read_file(fp, source=filename)
@@ -823,7 +823,7 @@ class MultiRawConfigParser(MutableMapping):
 		return [(option, value_getter(option)) for option in d.keys()]
 	
 	def popitem(self):
-		"""Remove a section from the parser and return it as
+		"""Remove a section from the _base and return it as
 		a (section_name, section_proxy) tuple. If no section is present, raise
 		KeyError.
 
@@ -962,7 +962,7 @@ class MultiRawConfigParser(MutableMapping):
 		default).
 
 		Values can span multiple lines, as long as they are indented deeper
-		than the first line of the value. Depending on the parser's mode, blank
+		than the first line of the value. Depending on the _base's mode, blank
 		lines may be treated as parts of multiline values or ignored.
 
 		Configuration files may include comments, prefixed by specific

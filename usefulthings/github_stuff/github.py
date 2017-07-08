@@ -25,7 +25,7 @@ def now_time_commit():
 	return get_now(name='US/Eastern').strftime('%Y-%m-%dT%H:%M:%SZ')
 
 RSS_GIT ='http://127.0.0.1:1234/?p=.git;a=rss'
-ATOM_GIT ='http://127.0.0.1:1234/?p=.git;a=atom;f=mdls/base.py'
+ATOM_GIT ='http://127.0.0.1:1234/?p=.git;a=atom;f=mdls/_base.py'
 RAW='http://127.0.0.1:1234/?p=.git;a=blob_plain;f=mdls/metadata/utt.py;hb=fdc7318744f2b87ae1c92c9fbc83f4233dce6cb0'
 __url_cache__ = dict()
 
@@ -35,13 +35,13 @@ __url_cache__ = dict()
 RH = '/Users/kristen/Library/Application Support/Gitbox/git-1.7.7.2.3.g19dee/git.bundle/lib/python2.7/site-packages/git_remote_helpers'
 
 ACCEPT_HEADERS = dict(json=     'application/vnd.github.v3+json',
-                      raw=      'application/vnd.github.v3.raw',
-                      diff=     'application/vnd.github.v3.diff',
-                      patch=    'application/vnd.github.v3.patch',
-                      sha=      'application/vnd.github.v3.sha',
-                      base64=   'application/vnd.github.v3.base64',
-                      full=     'application/vnd.github.v3.full')
-                      
+					  raw=      'application/vnd.github.v3.raw',
+					  diff=     'application/vnd.github.v3.diff',
+					  patch=    'application/vnd.github.v3.patch',
+					  sha=      'application/vnd.github.v3.sha',
+					  base64=   'application/vnd.github.v3.base64',
+					  full=     'application/vnd.github.v3.full')
+					  
 
 CONF ='''
 # --- Example file ---
@@ -61,6 +61,7 @@ T= '%Y-%m-%dT%H:%M:%SZ'
 #m.join('mdls','_data').listdir()[0].relto(m)
 
 def ensure_make(repo, path):
+	from usefulthings.github_stuff.path_stuff import PathEntry
 	if repo.file_contents(path).is_null():
 		file =repo.create_file(
 			path =path,
@@ -89,11 +90,11 @@ def re_show(regexp, string, left="{", right="}", color="blue"):
 	result = regex.compile(regexp, regex.V1).sub(left + r"\g<0>" + right, string.rstrip())
 	print('re.match({!r}, {!r}) => {!s}'.format(regexp, string, result))
 
-re_show('purebasename(?=.ext)', 'purebasename.ext')
-re_show('(?<=purebasename).ext', 'purebasename.ext')
-re_show('(?<!__pycache__)\.py', '__pycache__.py')
-re_show('Isaac(?!Asimov)', 'IsaacAsimov')
-re_show('Isaac(?!Asimov)', 'IsaacAsimo')
+#re_show('purebasename(?=.ext)', 'purebasename.ext')
+#re_show('(?<=purebasename).ext', 'purebasename.ext')
+#re_show('(?<!__pycache__)\.py', '__pycache__.py')
+#re_show('Isaac(?!Asimov)', 'IsaacAsimov')
+#re_show('Isaac(?!Asimov)', 'IsaacAsimo')
 
 LOOK = '\(\?[!<=]{,3}'
 
@@ -142,31 +143,31 @@ rr = regex.findall(r"(a|(b))", "aba")
 ACCEPT =dict(
 		any=['application/vnd.github.v3+json', 'application/vnd.github.v3.raw+json'],
 		comment=[
-	             'application/vnd.github.v3.raw+json',
-	             'application/vnd.github.v3.text+json',
-	             'application/vnd.github.v3.html+json',
-	             'application/vnd.github.v3.full+json'],
+				 'application/vnd.github.v3.raw+json',
+				 'application/vnd.github.v3.text+json',
+				 'application/vnd.github.v3.html+json',
+				 'application/vnd.github.v3.full+json'],
 		gist=[
-	             'application/vnd.github.v3+json',
-	             'application/json',
-	             'application/vnd.github.v3.raw'],
+				 'application/vnd.github.v3+json',
+				 'application/json',
+				 'application/vnd.github.v3.raw'],
 		comparison=[
-	             'application/vnd.github.v3.diff',
-	             'application/vnd.github.v3.patch',
-	             'application/vnd.github.v3.sha'],
+				 'application/vnd.github.v3.diff',
+				 'application/vnd.github.v3.patch',
+				 'application/vnd.github.v3.sha'],
 		commit=[
-	             'application/vnd.github.v3.diff',
-	             'application/vnd.github.v3.patch',
-	             'application/vnd.github.v3.sha'],
+				 'application/vnd.github.v3.diff',
+				 'application/vnd.github.v3.patch',
+				 'application/vnd.github.v3.sha'],
 		pull=[
-	             'application/vnd.github.v3.diff',
-	             'application/vnd.github.v3.patch',
-	             'application/vnd.github.v3.sha'],
+				 'application/vnd.github.v3.diff',
+				 'application/vnd.github.v3.patch',
+				 'application/vnd.github.v3.sha'],
 		contents=['application/vnd.github.v3.raw',
-                       'application/vnd.github.v3.html'],
+					   'application/vnd.github.v3.html'],
 		gists=['application/vnd.github.v3.raw',
-	             'application/vnd.github.v3.base64'])
-             
+				 'application/vnd.github.v3.base64'])
+			 
 class Headers(object):
 	re_url = '<(?P<url>[^>]+)>'
 	COMPARE_URL =       URITemplate("https://api.github.com/repos{/user}{/repo}compare{/contents}")

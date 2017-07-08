@@ -231,7 +231,7 @@ def prepare_url(*args, **kwargs):
 	return url
 
 
-COMPARE_URL = "https://api.github.com/repos/{user}/{repo}/compare/{base}...{head}"
+COMPARE_URL = "https://api.github.com/repos/{user}/{repo}/compare/{_base}...{head}"
 ARCHIVE_URL = 'https://api.github.com/repos/KGerring/mdls/{zipball}/{master}' #path
 #resp = self._get(url, allow_redirects=True, stream=True)
 
@@ -323,23 +323,11 @@ def iterate(json_data):
 	return urls
 			
 
-def gitrepository(github=None, repository=None):
-	if not github:
-		github =get_github()
-	me = github.me()
-	username = me.login
-	url = github._build_url('repos', owner=username, repository=repository)
-	json_data = github._json(github._get(url), 200)
-	result= github._instance_or_null(GitRepository, json_data)
-	result.github = github
-	return result
-
-
-
 
 
 class GitRepository(Repository):
-
+	BUILDERS = ['notifications','releases','milestones','branches','collaborators',
+	'commits', ]
 	github = None
 
 	def ensure_github(self):
@@ -424,7 +412,7 @@ class GitRepository(Repository):
 		
 			
 	def update_file(self, filename, localfilename, localdir=None):
-		file_contents = repository.file_contents(filename)
+		file_contents = self.file_contents(filename)
 		if localdir:
 			file = os.path.join(localdir, localfilename)
 		else:
@@ -445,7 +433,20 @@ class GitRepository(Repository):
 				
 		return file_contents
 
-
+def gitrepository(github=None, repository=None):
+	if not github:
+		github =get_github()
+	me = github.me()
+	username = me.login
+	url = github._build_url('repos', owner=username, repository=repository)
+	json_data = github._json(github._get(url), 200)
+	session = github.session
+	result= GitRepository(json_data, session=session)
+	result.github = github
+	if result.is_null():
+		return json_data
+	else:
+		return result
 
 META = {'ETag':                               'W/"4940686ba09e6edd8397805967132d33"',
         'Last-Modified':                      '',

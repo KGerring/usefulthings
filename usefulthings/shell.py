@@ -34,7 +34,7 @@ __version__ = (1, 0, 1)
 
 
 class ShellException(Exception):
-    """The base exception for all shell-related errors."""
+    """The _base exception for all shell-related errors."""
     pass
 
 

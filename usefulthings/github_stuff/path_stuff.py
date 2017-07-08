@@ -27,12 +27,14 @@ collapse ='https://raw.githubusercontent.com/Mottie/GitHub-userscripts/master/gi
 #els = $$(".markdown-body pre, .email-signature-reply"),
 languages='https://github.com/github/linguist/blob/master/lib/linguist/languages.yml'
 from send2trash import send2trash as remove
+import posixpath
 import tempfile
 try:
 	from startups import *
 except ImportError:
 	pass
 
+import py
 
 
 
@@ -126,6 +128,7 @@ MIME = ['/Users/kristen/dokuwiki/apache2/conf/mime.types',
 def get_symlink_dest(path): return posix.readlink(path)
 
 def isfifo(file):
+	import stat
 	return stat.S_ISFIFO(os.stat(file).st_mode)
 
 def ispickle(file):
@@ -146,17 +149,17 @@ from operator import methodcaller
 from io import BytesIO, FileIO, IOBase, RawIOBase, StringIO, TextIOBase, TextIOWrapper
 
 
-class Plist(object):
-	from datetime import datetime
-	DATETIME_FMT = '%Y-%m-%dT%H:%M:%S'
-	TOTAL_SECONDS = '%s'
-	sformat = methodcaller('strftime', format='%s')
-	mode = 'b+'
-	opener = os.open
-	buffering = -1
-	encoding = None
-	errors = None
-	closefd = True
+#class Plist(object):
+#	from datetime import datetime
+#	DATETIME_FMT = '%Y-%m-%dT%H:%M:%S'
+#	TOTAL_SECONDS = '%s'
+#	sformat = methodcaller('strftime', format='%s')
+#	mode = 'b+'
+#	opener = os.open
+#	buffering = -1
+#	encoding = None
+#	errors = None
+#	closefd = True
 	#root.docinfo.root_name
 	
 	
@@ -283,6 +286,7 @@ class FNMatcher:
 		self.pattern = pattern
 	
 	def __call__(self, path):
+		from py._path.common import iswin32
 		pattern = self.pattern
 		if (pattern.find(path.sep) == -1 and
 				iswin32 and
