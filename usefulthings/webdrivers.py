@@ -5,20 +5,18 @@
 # date = 7/8/17
 from startups import *
 import sys, os
-
-DRIVERS = ("""/Users/kristen/Downloads/geckodriver
-/Users/kristen/Downloads/phantomjs-2.1.1-macosx/bin/phantomjs
-/Users/kristen/Downloads/selenium-server-standalone-3.1.0.jar""")
+join = os.path.join
+WEBDRIVERS = os.path.expanduser('~/webdrivers')
 
 SELENIUM = '/Users/kristen/anaconda/selenium'
-STANDALONE = '/Users/kristen/Downloads/selenium-server-standalone-3.1.0.jar'
-GECKO = '/Users/kristen/Downloads/geckodriver'
-JQUERY ='/Users/kristen/Downloads/jquery-3.1.1.js'
-PHANTOMJS ='/Users/kristen/Downloads/phantomjs-2.1.1-macosx/bin/phantomjs'
-CHROME = '/Users/kristen/Downloads/chromedriver'
+STANDALONE = join(WEBDRIVERS, 'selenium-server-standalone-3.1.0.jar')
+GECKO = join(WEBDRIVERS,'geckodriver')
+JQUERY = join(WEBDRIVERS,'jquery-3.1.1.js')
+PHANTOMJS = join(WEBDRIVERS,'phantomjs')
+CHROME = join(WEBDRIVERS,'chromedriver')
 FIREFOX_PROFILE_DIR = '/Users/kristen/Library/Application Support/Firefox/Profiles'
-profile = join(FIREFOX_PROFILE_DIR, 'lsvbvalb.dev-edition-default')
-APP ='/Applications/FirefoxDeveloperEdition.app'
+FIREFOX_PROFILE = join(FIREFOX_PROFILE_DIR, 'lsvbvalb.dev-edition-default')
+#APP ='/Applications/FirefoxDeveloperEdition.app'
 BINARY = '/Applications/FirefoxDeveloperEdition.app/Contents/MacOS/firefox-bin'
 from selenium.webdriver import phantomjs, chrome, common, firefox
 from selenium import webdriver
@@ -30,20 +28,53 @@ Profile = firefox.firefox_profile.FirefoxProfile
 
 
 def get_chrome():
-	Chrome = webdriver.Chrome('/Users/kristen/Downloads/chromedriver')
-	#Chrome.get('https://www.literotica.com/stories/')
+	Chrome = webdriver.Chrome(CHROME)
+	#Chrome.get('chrome://bookmarks/')
 	return Chrome
 
 def get_phantomjs():
-	JS = webdriver.PhantomJS('/Users/kristen/Downloads/phantomjs-2.1.1-macosx/bin/phantomjs')
+	from selenium import webdriver
+	from selenium.webdriver import phantomjs
+	service = phantomjs.webdriver.Service(PHANTOMJS)
+	JS = webdriver.PhantomJS(PHANTOMJS)
 	return JS
 
 def get_firefox():
-	prof = firefox.firefox_profile.FirefoxProfile(profile)
-	executable_path = '/Users/kristen/Downloads/geckodriver'
+	prof = firefox.firefox_profile.FirefoxProfile(FIREFOX_PROFILE)
+	executable_path = GECKO
 	binary = firefox.firefox_binary.FirefoxBinary('/Applications/FirefoxDeveloperEdition.app')
-	Firefox = webdriver.Firefox(prof, binary, executable_path='/Users/kristen/Downloads/geckodriver')
+	Firefox = webdriver.Firefox(prof, binary, executable_path=GECKO)
 	return Firefox
+
+bookmarks = dict(
+BK_C = '/Users/kristen/Library/Mobile Documents/com~apple~CloudDocs/bookmarks_3_16_17.html',
+DOCUMENTS ='/Users/kristen/Documents',
+BK = join(DOCUMENTS, 'bookmarks_3_22_17.html'),
+BK4 = join(DOCUMENTS, 'bookmarks_3_22_174.html'),
+SAFARI ='/Users/kristen/Library/Caches/Metadata/Safari/Bookmarks',
+CB = '/Users/kristen/Downloads/Takeout/Chrome/Bookmarks.html')
+
+def log_in(uname, password):
+	c = get_chrome()
+	i= '//*[@id="gb_70"]'
+	c.get('https://www.google.com')
+	ii = c.find_element_by_xpath(i)
+	ii.click()
+	ID = c.find_element_by_id('identifierId')
+	ID.send_keys(uname)
+	button = c.find_element_by_id("identifierNext")
+	button.click()
 	
+	pass_inp = '//*[@id="password"]/div[1]/div/div[1]/input'
+	passwd = c.find_element_by_xpath(pass_inp)
+	passwd.send_keys(password)
+	pass_next = '//*[@id="passwordNext"]/content/span'
 	
-	if __name__ == '__main__': print(__file__)
+	pin = c.find_element_by_id("idvPin")
+	pin.send_keys('')
+	pin_next = '//*[@id="idvPreregisteredPhoneNext"]/content/span'
+	button_next = c.find_element_by_xpath(pin_next)
+	button_next.click()
+
+
+if __name__ == '__main__': print(__file__)
