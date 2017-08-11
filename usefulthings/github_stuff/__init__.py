@@ -282,9 +282,9 @@ class NullObjectException(Exception):
 #-fstype
 #-ilname pattern
 
-_gfind='''gfind . -type d -regex "^.*" -printf "%AY-%Am-%AdT%AH:%AM:00\t%P\t%sb\t%Y\n"'''
-_findthing ='''gfind $HOME -type d -iname mdls -regex ".*/PycharmProjects/.*"'''
-_findthing = '''gfind $PWD -type d -iname mdls -regex ".*/PycharmProjects/.*"'''
+_gfind='''gfind . -type d -regular "^.*" -printf "%AY-%Am-%AdT%AH:%AM:00\t%P\t%sb\t%Y\n"'''
+_findthing ='''gfind $HOME -type d -iname mdls -regular ".*/PycharmProjects/.*"'''
+_findthing = '''gfind $PWD -type d -iname mdls -regular ".*/PycharmProjects/.*"'''
 
 
 #subprocess.Popen(['gfind','$PWD', '-mtime','0'],shell=True)

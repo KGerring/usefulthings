@@ -42,7 +42,7 @@ def get_phantomjs():
 def get_firefox():
 	prof = firefox.firefox_profile.FirefoxProfile(FIREFOX_PROFILE)
 	executable_path = GECKO
-	binary = firefox.firefox_binary.FirefoxBinary('/Applications/FirefoxDeveloperEdition.app')
+	binary = firefox.firefox_binary.FirefoxBinary('/Applications/FirefoxDeveloperEdition.app/Contents/MacOS/firefox-bin')
 	Firefox = webdriver.Firefox(prof, binary, executable_path=GECKO)
 	return Firefox
 

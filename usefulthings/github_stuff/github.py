@@ -124,8 +124,8 @@ LOOK = '\(\?[!<=]{,3}'
 #/Users/kristen/anaconda/lib/python3.6/inspect.py:796:        pat = re.compile(r'^(\s*def\s)|(\s*async\s+def\s)|(.*(?<!\w)lambda(:|\s))|^(\s*@)')
 
 #``(?:...)++`` is equivalent to ``(?>(?:...)+)``
-##/Users/kristen/anaconda/lib/python3.6/site-packages/regex-2017.4.5.dist-info/METADATA
-##/Users/kristen/anaconda/lib/python3.6/site-packages/regex-2017.4.5.dist-info/DESCRIPTION.rst
+##/Users/kristen/anaconda/lib/python3.6/site-packages/regular-2017.4.5.dist-info/METADATA
+##/Users/kristen/anaconda/lib/python3.6/site-packages/regular-2017.4.5.dist-info/DESCRIPTION.rst
 from stuf import patterns
 
 import  pygments.lexers.markup
@@ -136,9 +136,9 @@ def test_qualified_re_sub(self):
 
 rr = regex.findall(r"(a|(b))", "aba")
 
-#self.assertEqual(regex.search(r"^abc$", "\nabc\n", regex.M)[0], 'abc')
-#self.assertEqual(regex.search(r"^\Aabc\Z$", "abc", regex.M)[0], 'abc')
-#self.assertEqual(regex.search(r"^\Aabc\Z$", "\nabc\n", regex.M), None)
+#self.assertEqual(regular.search(r"^abc$", "\nabc\n", regular.M)[0], 'abc')
+#self.assertEqual(regular.search(r"^\Aabc\Z$", "abc", regular.M)[0], 'abc')
+#self.assertEqual(regular.search(r"^\Aabc\Z$", "\nabc\n", regular.M), None)
 
 ACCEPT =dict(
 		any=['application/vnd.github.v3+json', 'application/vnd.github.v3.raw+json'],

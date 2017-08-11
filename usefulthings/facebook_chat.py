@@ -8,7 +8,7 @@ import sys, os
 import fbchat
 import fbchat.client
 import fbchat.models
-import fbchat.stickers
+#import fbchat.stickers
 import fbchat.utils
 from startups.core import pythonize
 from inflection import underscore, camelize
@@ -120,10 +120,6 @@ KEYS=['getAllUsers',
 		'getUsers']
 
 
-
-
-
-
 def process_all_users(self):
 	users = [(pythonize(user.name), user) for user in self.getAllUsers()]
 	return AttrDict(users)
@@ -137,5 +133,55 @@ def get_facebook():
 		client.password = '******'
 	return client
 
+def get_self_sent_messages(client, limit = 50):
+	ID = client.uid
+	messages = client.fetchThreadMessages(thread_id=ID, limit = 50)
+	return messages
 
-if __name__ == '__main__': print(__file__)
+def get_attached_url(message, with_title = False):
+	from furl import furl
+	ext = message.extensible_attachment
+	if ext is not None:
+		attachment = message.extensible_attachment.get('story_attachment')
+		ex = attachment.get('url')
+		durl = furl(ex).args
+		url= durl.get('u', durl)
+		if with_title:
+			title = attachment.get('title_with_entities').get('text')
+			return (url, title)
+		else:
+			return url
+	
+def get_attachment(message):
+	uris = []
+	for attachment in  message.attachments:
+		if attachment.get('__typename').__contains__('Image'):
+			uri =attachment.get('large_preview').get('uri')
+			uris.append(uri)
+	return uris
+	
+
+def get_main():
+	from tabulate import tabulate
+	FB = get_facebook()
+	messages = get_self_sent_messages(FB, limit=50)
+	URLS = []
+	for message in messages:
+		url = get_attached_url(message, with_title=True)
+		if url:
+			URLS.append(url)
+	print(tabulate(URLS, tablefmt='grid', headers=['URL', 'TITLE']))
+	return URLS
+	
+
+##
+if __name__ == '__main__':
+	from tabulate import tabulate
+	FB = get_facebook()
+	messages = get_self_sent_messages(FB, limit=50)
+	URLS = []
+	for message in messages:
+		url = get_attached_url(message, with_title=True)
+		if url:
+			URLS.append(url)
+	print(tabulate(URLS, tablefmt='grid', headers=['URL', 'TITLE']))
