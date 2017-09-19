@@ -217,16 +217,17 @@ class TimeUnit(object):
 	
 		
 	
+days,hours = 1,1
 
-
-seconds = 1000 * milliseconds
-milliseconds = 1000 * microseconds
-minutes =   60 * seconds
-hours =     60 * minutes
-days =      24 * hours
-weeks =     7 * days
-years = 365 * days
-
+def datedict(): return dict(
+years = 365 * days,
+weeks =     7 * days,
+days =      24 * hours,
+hours =     60 * minutes,
+minutes =   60 * seconds,
+seconds = 1000 * milliseconds,
+milliseconds = 1000 * microseconds,
+)
 
 TIMEDELTA_UNITS = (('year', 31536000), ('month', 2592000), ('week', 604800), ('day', 86400), ('hour', 3600), ('minute', 60), ('second', 1))
 
@@ -464,7 +465,21 @@ DAYS = '{:2d}'
 FULL_DAYS = '{:02d}'
 MICROSECOND = '{:06d}'
 STRF_DT_MAP = {'%d': (lambda tdt, yds: ('%02d' % tdt.day)), '%f': (lambda tdt, yds: ('%06d' % tdt.microsecond)), '%H': (lambda tdt, yds: ('%02d' % tdt.hour)), '%j': (lambda tdt, yds: ('%03d' % ((tdt.toordinal() - date(tdt.year, 1, 1).toordinal()) + 1))), '%m': (lambda tdt, yds: ('%02d' % tdt.month)), '%M': (lambda tdt, yds: ('%02d' % tdt.minute)), '%S': (lambda tdt, yds: ('%02d' % tdt.second)), '%w': (lambda tdt, yds: ('%1d' % tdt.isoweekday())), '%W': (lambda tdt, yds: ('%02d' % tdt.isocalendar()[1])), '%Y': (lambda tdt, yds: ((((yds != 4) and '+') or '') + (('%%0%dd' % yds) % tdt.year))), '%C': (lambda tdt, yds: ((((yds != 4) and '+') or '') + (('%%0%dd' % (yds - 2)) % (tdt.year / 100)))), '%h': (lambda tdt, yds: tz_isoformat(tdt, '%h')), '%Z': (lambda tdt, yds: tz_isoformat(tdt, '%Z')), '%z': (lambda tdt, yds: tz_isoformat(tdt, '%z')), '%%': (lambda tdt, yds: '%')}
-strings = [('DATE_BAS_COMPLETE', '%Y%m%d'), ('DATE_BAS_ORD_COMPLETE', '%Y%j'), ('DATE_BAS_WEEK', '%YW%W'), ('DATE_BAS_WEEK_COMPLETE', '%YW%W%w'), ('DATE_CENTURY', '%C'), ('DATE_EXT_COMPLETE', '%Y-%m-%d'), ('DATE_EXT_ORD_COMPLETE', '%Y-%j'), ('DATE_EXT_WEEK', '%Y-W%W'), ('DATE_EXT_WEEK_COMPLETE', '%Y-W%W-%w'), ('DATE_MONTH', '%Y-%m'), ('DATE_YEAR', '%Y'), ('DT_BAS_COMPLETE', '%Y%m%dT%H%M%S%z'), ('DT_BAS_ORD_COMPLETE', '%Y%jT%H%M%S%z'), ('DT_BAS_WEEK_COMPLETE', '%YW%W%wT%H%M%S%z'), ('DT_EXT_COMPLETE', '%Y-%m-%dT%H:%M:%S%Z'), ('DT_EXT_ORD_COMPLETE', '%Y-%jT%H:%M:%S%Z'), ('DT_EXT_WEEK_COMPLETE', '%Y-W%W-%wT%H:%M:%S%Z'), ('D_ALT_BAS', 'P%Y%m%dT%H%M%S'), ('D_ALT_BAS_ORD', 'P%Y%jT%H%M%S'), ('D_ALT_EXT', 'P%Y-%m-%dT%H:%M:%S'), ('D_ALT_EXT_ORD', 'P%Y-%jT%H:%M:%S'), ('D_DEFAULT', 'P%P'), ('D_WEEK', 'P%p'), ('TIME_BAS_COMPLETE', '%H%M%S'), ('TIME_BAS_MINUTE', '%H%M'), ('TIME_EXT_COMPLETE', '%H:%M:%S'), ('TIME_EXT_MINUTE', '%H:%M'), ('TIME_HOUR', '%H'), ('TZ_BAS', '%z'), ('TZ_EXT', '%Z'), ('TZ_HOUR', '%h')]
+strings = [('DATE_BAS_COMPLETE', '%Y%m%d'),
+           ('DATE_BAS_ORD_COMPLETE', '%Y%j'),
+           ('DATE_BAS_WEEK', '%YW%W'),
+           ('DATE_BAS_WEEK_COMPLETE', '%YW%W%w'),
+           ('DATE_CENTURY', '%C'), ('DATE_EXT_COMPLETE', '%Y-%m-%d'),
+           ('DATE_EXT_ORD_COMPLETE', '%Y-%j'), ('DATE_EXT_WEEK', '%Y-W%W'),
+           ('DATE_EXT_WEEK_COMPLETE', '%Y-W%W-%w'), ('DATE_MONTH', '%Y-%m'),
+           ('DATE_YEAR', '%Y'), ('DT_BAS_COMPLETE', '%Y%m%dT%H%M%S%z'),
+           ('DT_BAS_ORD_COMPLETE', '%Y%jT%H%M%S%z'), ('DT_BAS_WEEK_COMPLETE', '%YW%W%wT%H%M%S%z'),
+           ('DT_EXT_COMPLETE', '%Y-%m-%dT%H:%M:%S%Z'), ('DT_EXT_ORD_COMPLETE', '%Y-%jT%H:%M:%S%Z'),
+           ('DT_EXT_WEEK_COMPLETE', '%Y-W%W-%wT%H:%M:%S%Z'), ('D_ALT_BAS', 'P%Y%m%dT%H%M%S'),
+           ('D_ALT_BAS_ORD', 'P%Y%jT%H%M%S'), ('D_ALT_EXT', 'P%Y-%m-%dT%H:%M:%S'),
+           ('D_ALT_EXT_ORD', 'P%Y-%jT%H:%M:%S'), ('D_DEFAULT', 'P%P'), ('D_WEEK', 'P%p'), ('TIME_BAS_COMPLETE', '%H%M%S'),
+           ('TIME_BAS_MINUTE', '%H%M'), ('TIME_EXT_COMPLETE', '%H:%M:%S'), ('TIME_EXT_MINUTE', '%H:%M'),
+           ('TIME_HOUR', '%H'), ('TZ_BAS', '%z'), ('TZ_EXT', '%Z'), ('TZ_HOUR', '%h')]
 DATES = [re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})-(?P<month>[0-9]{2})-(?P<day>[0-9]{2})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})(?P<month>[0-9]{2})(?P<day>[0-9]{2})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})-W(?P<week>[0-9]{2})-(?P<day>[0-9]{1})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})W(?P<week>[0-9]{2})(?P<day>[0-9]{1})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})-(?P<day>[0-9]{3})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})(?P<day>[0-9]{3})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})-W(?P<week>[0-9]{2})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})W(?P<week>[0-9]{2})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})-(?P<month>[0-9]{2})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})'), re.compile('(?P<sign>[+-]){0}(?P<century>[0-9]{2})')]
 TIMES = [re.compile('T?(?P<hour>[0-9]{2}):(?P<minute>[0-9]{2}):(?P<second>[0-9]{2}([,.][0-9]+)?)(?P<tzname>(Z|(?P<tzsign>[+-])(?P<tzhour>[0-9]{2})(:(?P<tzmin>[0-9]{2}))?)?)'), re.compile('T?(?P<hour>[0-9]{2})(?P<minute>[0-9]{2})(?P<second>[0-9]{2}([,.][0-9]+)?)(?P<tzname>(Z|(?P<tzsign>[+-])(?P<tzhour>[0-9]{2})(:(?P<tzmin>[0-9]{2}))?)?)'), re.compile('T?(?P<hour>[0-9]{2}):(?P<minute>[0-9]{2}([,.][0-9]+)?)(?P<tzname>(Z|(?P<tzsign>[+-])(?P<tzhour>[0-9]{2})(:(?P<tzmin>[0-9]{2}))?)?)'), re.compile('T?(?P<hour>[0-9]{2})(?P<minute>[0-9]{2}([,.][0-9]+)?)(?P<tzname>(Z|(?P<tzsign>[+-])(?P<tzhour>[0-9]{2})(:(?P<tzmin>[0-9]{2}))?)?)'), re.compile('T?(?P<hour>[0-9]{2}([,.][0-9]+)?)(?P<tzname>(Z|(?P<tzsign>[+-])(?P<tzhour>[0-9]{2})(:(?P<tzmin>[0-9]{2}))?)?)')]
 

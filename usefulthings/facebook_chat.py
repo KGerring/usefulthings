@@ -16,10 +16,127 @@ from six.moves.http_cookiejar import CookieJar
 from grab.cookie import CookieManager
 import re
 from fbchat.utils import now, get_json
-from fbchat.models import User as OldUser
+from fbchat.models import User as OldUser, Message as OldMessage
+from usefulthings import datetime_stuff
+from fbchat.client import graphql_to_message, graphql_response_to_json
+from isodate import parse_datetime
+FMTSTR = '%b %d,%l:%M%p'
+
+
+
+PRIVATE_KEY_FILE= '/Users/kristen/.ssh/kgerring_rsa'
+PUBLIC_KEY_FILE = '/Users/kristen/.ssh/kgerring_rsa.pub'
+
+def load_rsa_keys(public='/Users/kristen/.ssh/kgerring_rsa.pub', private=PRIVATE_KEY_FILE):
+	import rsa
+	
+	PUBLIC_KEY_FILE = os.path.expanduser('~/.ssh/kgerring_rsa.pub')
+	PRIVATE_KEY_FILE = os.path.expanduser('~/.ssh/kgerring_rsa')
+	PublicKey = rsa.PublicKey._load_pkcs1_pem(open(PUBLIC_KEY_FILE, 'rb').read())
+	PrivateKey = rsa.PrivateKey._load_pkcs1_pem(open(PRIVATE_KEY_FILE, 'rb').read())
+	return PublicKey, PrivateKey
+
+
+
+
+def rsa_encrypt(message, public_key):
+	from startups.core import encode, decode
+	if not isinstance(message, bytes):
+		message = encode(message)
+		return rsa.encrypt(message, public_key)
+	
+def rsa_decrypt(encrypted, private_key):
+	from startups.core import encode, decode
+	decrypted = rsa.decrypt(encrypted, private_key)
+	if isinstance(decrypted, bytes):
+		return decode(decrypted)
+	return decrypted
+
+
+def rsa_sign(message, private_key, hash='MD5'):
+	if not isinstance(message, bytes):
+		message = encode(message)
+	return rsa.sign(message, private_key, hash=hash)
+
+
+def rsa_verify(message, signature, public_key):
+	if not isinstance(message, bytes):
+		message = encode(message)
+	try:
+		return rsa.verify(message, signature, public_key)
+	except rsa.pkcs1.VerificationError:
+		return False
+
+
+
+
 #todo uploadImage
 #todo sendLocalImage, sendRemoteImage
 #todo list_mimetypes common
+
+def to_datetime(timestamp, TS_FACTOR=1000):
+	from datetime import datetime
+	if isinstance(timestamp, str):
+		ts = int(timestamp)
+		ts = ts / TS_FACTOR
+		return datetime.fromtimestamp(ts)
+	elif isinstance(timestamp, int):
+		ts = timestamp
+		ts = ts / TS_FACTOR
+		return datetime.fromtimestamp(ts)
+	return None
+
+
+params = {
+	'id': '7202549',
+	'message_limit': 20,
+	'load_messages': True,
+	'load_read_receipts': False,
+	'before': None
+}
+
+def get_message_type(message):
+	try_attach = message.attachments
+	if message.attachments:
+		return message.attachments[0].get('__typename')
+	else: return 'Text'
+		
+		
+#graphql_requests
+#fetchThreadMessages
+#fetchThreadInfo
+#fb_h
+#_getThread
+
+
+def get_message_from(self, uid, limit=100, before=None):
+	from fbchat.client import GraphQL
+	params = dict()
+	params['load_read_receipts'] = True
+	params['before'] = before
+	params['load_messages'] = True
+	params['message_limit'] = limit
+	params['id'] = uid
+	j = self.graphql_request(GraphQL(doc_id='1386147188135407', params=params))
+	return j
+
+
+
+REACTIONS = dict(LOVE='😍', SMILE='😆',
+                 WOW='😮',
+                 SAD='😢',
+                 ANGRY='😠',
+                 YES='👍',
+                 NO='👎')
+
+
+def get_attachment(message):
+	uris = []
+	for attachment in message.attachments:
+		if attachment.get('__typename').__contains__('Image'):
+			uri = attachment.get('large_preview').get('uri')
+			uris.append(uri)
+	return uris
 
 class User(OldUser):
 	@property
@@ -66,10 +183,131 @@ class User(OldUser):
 		
 		return '<{!s} {!r} ({!r})>'.format(clsname, shortname, self.uid)
 		
+		
+
+		
+class Message(OldMessage):
+	DATESTR = '%Y-%m-%dT%H:%M:%S'
+	D = '%b %d,%l:%M%p'
+	
+	@property
+	def _ts(self):
+		return to_datetime(self.timestamp).strftime('%Y-%m-%dT%H:%M:%S')
+	
+	@property
+	def name(self):
+		if self.author == '7202549':
+			return "Kristen"
+		return "Michael"
+	
+	@property
+	def ts(self):
+		return to_datetime(self.timestamp).strftime('%b %d,%l:%M%p')
+	
+	def format(self, fmtstr='{} ({}):{}'):
+		return fmtstr.format(self.name, self.ts, self.text)
+	
+	def __str__(self):
+		return '{} ({}): {}'.format(self.name, self.ts, self.text)
+	
+	
+	
+	#@property
+	#def attachment(self):
+	#	uris = []
+	#	for attachment in self.attachments:
+	#		if attachment.get('__typename').__contains__('Image'):
+	#			uri = attachment.get('large_preview').get('uri')
+	#			uris.append(uri)
+	#	return uris
+	
+	#def update_text(self):
+	#	try:
+	#		if self.text == '':
+	#			self.text = self.attachment[0]
+	#	except (AttributeError, IndexError, TypeError):
+	#		pass
+	
+def safe_pickler(file, private_key):
+	import rsa
+	import json
+	PRIVATE_KEY_FILE = '/Users/kristen/.ssh/kgerring_rsa'
+	PrivateKey = rsa.PrivateKey._load_pkcs1_pem(open(PRIVATE_KEY_FILE, 'rb').read())
+	
+	if not private_key == PrivateKey:
+		return
+	else:
+		return json.loads(unpickler(file))
 
 
+def flatten(lst, out=None):
+	"""
+	Return a flattened version of C{lst}.
+	"""
+	if out is None: out = []
+	for elt in lst:
+		if isinstance(elt, (list, tuple)):
+			flatten(elt, out)
+		else:
+			out.append(elt)
+	return out
 
 
+class Conversation(object):
+	selfuser = '7202549'
+	CHAD = '100000669061191'
+	def __init__(self, data, nodes = []):
+		self.data = data
+		if self.data:
+			self.thread = data.get('message_thread')
+			self.message_count = self.thread.get('messages_count', 0)
+			self.participants = set([u.get('messaging_actor').get('id') for u in self.thread.get('all_participants').get('nodes')])
+			self.participants.remove(self.selfuser)
+			self.thread_key = self.thread.get('thread_key')
+			self.messages = self.thread.get('messages').get('nodes')
+			self.node_length = len(self.messages)
+			self.updated_time = self.thread.get('updated_time_precise')
+			self.page_info = self.thread.get('messages').get('page_info')
+		self.nodes = nodes
+	
+	def get_prior(self):
+		pass
+		
+	@property
+	def get_last_message(self):
+		return self.thread.get('last_message').get('nodes')[0]
+	
+	@property
+	def last_read_receipt(self):
+		return to_datetime(self.thread.get('last_read_receipt').get('nodes')[0].get('timestamp_precise'))
+	
+	def convert(self, message):
+		timestamp = message.get('timestamp_precise')
+		text = message.get('snippet')
+		author = message.get('message_sender').get('id')
+		uid = message.get('message_id')
+		if author is '7202549':
+			name = 'Kristen'
+		else:
+			name = 'Michael'
+		return Message(uid, author =author, timestamp =timestamp, text=text)
+	
+	def to_string(self):
+		self.nodes = list(map(self.convert, self.messages))
+		messages = list(map(str, self.nodes))
+		from textwrap import wrap
+		WRAPS = []
+		for message in messages:
+			wp = wrap(message, 100)
+			WRAPS.extend(wp)
+			#if len(wp) > 3:
+			#	WRAPS.append('\n')
+		return '\n'.join(WRAPS)
+	
+	
+	
+	
+	#####
 URLS={'AllUsersURL': 'https://www.facebook.com/chat/user_info_all',
  'BaseURL': 'https://www.facebook.com',
  'CheckpointURL': 'https://m.facebook.com/login/checkpoint/',
@@ -119,9 +357,16 @@ KEYS=['getAllUsers',
 		'getUserInfo',
 		'getUsers']
 
+#fetchThreadMessages
+#fetchThreadInfo
+
+#fetchThreadList
+#fetchUnread
+
+
 
 def process_all_users(self):
-	users = [(pythonize(user.name), user) for user in self.getAllUsers()]
+	users = [(pythonize(user.name), user) for user in self.fetchAllUsers()]
 	return AttrDict(users)
 
 def get_facebook():
@@ -140,9 +385,9 @@ def get_self_sent_messages(client, limit = 50):
 
 def get_attached_url(message, with_title = False):
 	from furl import furl
-	ext = message.extensible_attachment
+	ext = message.get('extensible_attachment')
 	if ext is not None:
-		attachment = message.extensible_attachment.get('story_attachment')
+		attachment = message.get('extensible_attachment').get('story_attachment')
 		ex = attachment.get('url')
 		durl = furl(ex).args
 		url= durl.get('u', durl)
@@ -152,13 +397,7 @@ def get_attached_url(message, with_title = False):
 		else:
 			return url
 	
-def get_attachment(message):
-	uris = []
-	for attachment in  message.attachments:
-		if attachment.get('__typename').__contains__('Image'):
-			uri =attachment.get('large_preview').get('uri')
-			uris.append(uri)
-	return uris
+
 	
 
 def get_main():
@@ -175,6 +414,33 @@ def get_main():
 	
 
 ##
+CHAD = '100000669061191'
+TS_FACTOR = 1000
+
+#GraphQL
+
+	
+	
+	#
+
+
+#['message_thread']['messages']['nodes']
+
+
+
+
+
+#strftime('%s')
+
+
+def get_messages(self, uid, limit=100, before=None):
+	return self.fetchThreadMessages(uid, limit=limit, before=before)
+
+	
+
+
+
+
 if __name__ == '__main__':
 	from tabulate import tabulate
 	FB = get_facebook()

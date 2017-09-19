@@ -198,6 +198,12 @@ grouping_option = ['_',',']
 
 _type = ['b', 'c', 'd', 'e', 'E', 'f', 'F', 'g', 'G', 'n', 'o', 's', 'x', 'X', '%']
 
+A = '{:<14}'
+ALIGN ='<'
+FILL = ' '
+
+print('{:>30}', '{:>30}'.format('right aligned'))
+
 
 
 E = '{fill}{align}{sign}{width}{grouping}{precision}{type}'.format(fill=' ', align='^', sign='+', width=3, grouping='_',
@@ -252,45 +258,10 @@ def make_table(data, headers=(), tablefmt='grid', floatfmt='g', missingval="", n
 	
 	return tabulate.tabulate(tabular_data=data, headers=headers, tablefmt=tablefmt, floatfmt= floatfmt, numalign =numalign, stralign=stralign)
 	
-	
-	
-	operator_mapping = {'!=':     'different',
-                    '$=':     'suffixmatch',
-                    '*=':     'substringmatch',
-                    '=':      'equals',
-                    '^=':     'prefixmatch',
-                    'exists': 'exists',
-                    '|=':     'dashmatch',
-                    '~=':     'includes'}
-
-conditions = dict(substringmatch ='@{0} and (@{0} = "{1}" or starts-with(@{0}, "{1}"))',
-                  includes ="{0} and contains(concat(' ', normalize-space({0}), ' '), {1!r})",
-                  dashmatch ='{0} and ({0} = {1!r} or starts-with({0}, {1!r}))',
-                  prefixmatch ='{0} and starts-with({0}, {1!r})',
-                  suffixmatch ='{0} and substring({0}, string-length({0})-{1}) = {1!r}',
-                  contains ='%s and contains(%s, %r)'
-                  )
-
-STARTSWITH = '@{0!s} and (@{0!s} = {1!r} or starts-with(@{0!s}, {1!r}))'
-
-
-
-cond = {'ATTR_DIFFERENT': 'not({0}) or {0} != {1}',
-        'ATTR_NAME':      '@{}',
-        'DASHMATCH':      '{0!s} and ({0} = {1!r} or starts-with({0!s}, {1!r}-))',
-        'STARTS_WITH':    "{0!s} and starts-with({0!s}, {1!r})",
-        'SUFFIXMATCH':    '{0} and substring({0}, string-length({0})-{value}) = "{1}"'}
 
 
 
 
-
-
-
-
-
-
-contains_foot = 'descendant-or-self::*[@id and (@id = "foot" or starts-with(@id, "foot"))]'
 
 
 
