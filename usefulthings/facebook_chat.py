@@ -198,7 +198,7 @@ class Message(OldMessage):
 	def name(self):
 		if self.author == '7202549':
 			return "Kristen"
-		return "Michael"
+		return "Other"
 	
 	@property
 	def ts(self):
@@ -255,7 +255,7 @@ def flatten(lst, out=None):
 
 class Conversation(object):
 	selfuser = '7202549'
-	CHAD = '100000669061191'
+	
 	def __init__(self, data, nodes = []):
 		self.data = data
 		if self.data:
@@ -289,7 +289,7 @@ class Conversation(object):
 		if author is '7202549':
 			name = 'Kristen'
 		else:
-			name = 'Michael'
+			name = 'Other'
 		return Message(uid, author =author, timestamp =timestamp, text=text)
 	
 	def to_string(self):
@@ -414,7 +414,7 @@ def get_main():
 	
 
 ##
-CHAD = '100000669061191'
+
 TS_FACTOR = 1000
 
 #GraphQL

@@ -231,7 +231,7 @@ def _select_from(self, parent_path, is_dir, exists, scandir):
 		return
 
 
-popen = subprocess.Popen
+#popen = subprocess.Popen
 
 ACK = '/usr/local/bin/ack'
 #drv, root, pattern_parts = self._flavour.parse_parts((pattern,))

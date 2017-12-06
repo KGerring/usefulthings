@@ -1,4 +1,5 @@
-
+#!/usr/bin/env
+# -*- coding: utf-8 -*-
 import sys, os
 from string import ascii_letters
 import datetime
@@ -10,9 +11,56 @@ from datetime import date, timedelta
 import re
 from isodate.isotzinfo import tz_isoformat
 from pytz import timezone, UTC
-from isodate.duration import Duration
+
 from isodate.isoduration import ISO8601_PERIOD_REGEX, parse_duration
 from decimal import Decimal
+
+from isodate import duration_isoformat, parse_duration, Duration
+from functools import partial
+
+from pint import _build_unit, _build_quantity, UnitRegistry
+from pint.registry import UnitRegistry, UnitsContainer, ScaleConverter, PrefixDefinition, Definition
+
+from pint.definitions import Definition, DimensionDefinition, PrefixDefinition, UnitDefinition
+
+from pint.util import to_units_container
+
+
+def example(to_, from_):
+	UR = UnitRegistry()
+	return UR._units['microsecond'].converter.from_reference(UR.second)
+
+
+
+
+
+
+
+def fmt(s, pattern='%{0}', date_time=None):
+	from datetime import datetime as dt
+	if (date_time is None):
+		formatted = dt.now().strftime(pattern.format(s))
+	else:
+		try:
+			formatted = dt(date_time).strftime(pattern.format(s))
+		except TypeError:
+			formatted = None
+	return formatted
+
+
+lookup_fmt = partial(fmt, pattern='%%{0}: %{0}')
+print(list(map(lookup_fmt, list('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'))))
+
+
+
+
+#mm = ac.init_index('mdfind')
+#mm.get_object('26902241')
+#sr = mm.search('date')
+#hits = sr.get('nbHits')
+BLUE = '\x1b[34m{0}\x1b[0m'
+EM_REGEX = regex.compile("r<em>[^<]*</em>")
+
 
 
 import dateutil
@@ -37,8 +85,10 @@ def get_local_tzfile():
 	posix = tz._read_tzfile(open('/usr/share/zoneinfo/posixrules', 'rb'))
 	return tz, posix
 
+#'$time.this_week', '$time.this_week(+1)'
 
 
+EXEX = mdfind('modified:11/03/2017-11/10/2017 AND kind:Python Source')
 
 zoneinfo = dateutil.zoneinfo
 
@@ -335,20 +385,27 @@ from datetime import datetime as dt
 import time
 
 def _process_carryover(deltas, carry_over):
-	'A helper function to process negative deltas based on the deltas\n\tand the list of tuples that contain the carry over values'
+	"""A helper function to process negative deltas based on the deltas
+	and the list of tuples that contain the carry over values
+	
+	:param deltas:
+	:param carry_over:
+	:return:
+	"""
+	
 	for (smaller, larger, amount) in carry_over:
 		if (deltas[smaller] < 0):
 			deltas[larger] -= 1
 			deltas[smaller] += amount
 
 def _pluralize_granularity(granularity):
-	'Pluralize the given granularity'
+	"""Pluralize the given granularity"""
 	if ('century' == granularity):
 		return 'centuries'
 	return (granularity + 's')
 
 def _delta_string(delta, granularity):
-	'Return the string to use for the given delta and ordinality'
+	"""Return the string to use for the given delta and ordinality"""
 	if (1 == delta):
 		return ('1 ' + granularity)
 	elif (delta > 1):
@@ -359,8 +416,35 @@ def _is_leap_year(year):
 		return True
 	return False
 
-def distance_of_time_in_words(from_time, to_time=0, granularity='second', round=False):
-	"\n\tReturn the absolute time-distance string for two datetime objects,\n\tints or any combination you can dream of.\n\n\tIf times are integers, they are interpreted as seconds from now.\n\n\t``granularity`` dictates where the string calculation is stopped.\n\tIf set to seconds (default) you will receive the full string. If\n\tanother accuracy is supplied you will receive an approximation.\n\tAvailable granularities are:\n\t'century', 'decade', 'year', 'month', 'day', 'hour', 'minute',\n\t'second'\n\n\tSetting ``round`` to true will increase the result by 1 if the fractional\n\tvalue is greater than 50% of the granularity unit.\n\n\tExamples:\n\n\t>>> distance_of_time_in_words(86399, round=True, granularity='day')\n\t'1 day'\n\t>>> distance_of_time_in_words(86399, granularity='day')\n\t'less than 1 day'\n\t>>> distance_of_time_in_words(86399)\n\t'23 hours, 59 minutes and 59 seconds'\n\t>>> distance_of_time_in_words(datetime(2008,3,21, 16,34),\n\t... datetime(2008,2,6,9,45))\n\t'1 month, 15 days, 6 hours and 49 minutes'\n\t>>> distance_of_time_in_words(datetime(2008,3,21, 16,34),\n\t... datetime(2008,2,6,9,45), granularity='decade')\n\t'less than 1 decade'\n\t>>> distance_of_time_in_words(datetime(2008,3,21, 16,34),\n\t... datetime(2008,2,6,9,45), granularity='second')\n\t'1 month, 15 days, 6 hours and 49 minutes'\n\t"
+def distance_of_time_in_words(from_time, to_time=0, granularity='second', round=False, dict_only=False):
+	"""Return the absolute time-distance string for two datetime objects,
+	ints or any combination you can dream of.
+	
+	If times are integers, they are interpreted as seconds from now.
+
+	granularities = ['century', 'decade', 'year', 'month', 'day', 'hour', 'minute', 'second']
+	
+	:param from_time:
+	:param to_time:
+	:param granularity: dictates where the string calculation is stopped.If set to seconds (default) you will receive
+			the full string. If another accuracy is supplied you will receive an approximation. Available granularities
+			are: 'century', 'decade', 'year', 'month', 'day', 'hour', 'minute','second'
+			
+	:param round: Setting ``round`` to True will increase the result by 1 if the fractional value is greater than 50% of the granularity unit.
+	:return:
+	
+	>>> ex1 = distance_of_time_in_words(86399, round=True, granularity='day')
+	>>> ex1
+	... '1 day'
+	>>> lt = distance_of_time_in_words(86399, granularity='day')
+	>>> lt
+	... 'less than 1 day'
+	>>> distance_of_time_in_words(86399)
+	... '23 hours, 59 minutes and 59 seconds'
+	>>> distance_of_time_in_words(datetime.datetime(2008,3,21, 16,34))
+	
+	"""
+	#Return the absolute time-distance string for two datetime objects,\n\tints or any combination you can dream of.\n\n\tIf times are integers, they are interpreted as seconds from now.\n\n\t``granularity`` dictates where the string calculation is stopped.\n\tIf set to seconds (default) you will receive the full string. If\n\tanother accuracy is supplied you will receive an approximation.\n\tAvailable granularities are:\n\t'century', 'decade', 'year', 'month', 'day', 'hour', 'minute',\n\t'second'\n\n\tSetting ``round`` to true will increase the result by 1 if the fractional\n\tvalue is greater than 50% of the granularity unit.\n\n\tExamples:\n\n\t>>> distance_of_time_in_words(86399, round=True, granularity='day')\n\t'1 day'\n\t>>> distance_of_time_in_words(86399, granularity='day')\n\t'less than 1 day'\n\t>>> distance_of_time_in_words(86399)\n\t'23 hours, 59 minutes and 59 seconds'\n\t>>> distance_of_time_in_words(datetime(2008,3,21, 16,34),\n\t... datetime(2008,2,6,9,45))\n\t'1 month, 15 days, 6 hours and 49 minutes'\n\t>>> distance_of_time_in_words(datetime(2008,3,21, 16,34),\n\t... datetime(2008,2,6,9,45), granularity='decade')\n\t'less than 1 decade'\n\t>>> distance_of_time_in_words(datetime(2008,3,21, 16,34),\n\t... datetime(2008,2,6,9,45), granularity='second')\n\t'1 month, 15 days, 6 hours and 49 minutes'\n\t"
 	granularities = ['century', 'decade', 'year', 'month', 'day', 'hour', 'minute', 'second']
 	granularity_size = {'century': 10, 'decade': 10, 'year': 10, 'month': 12, 'day': 15, 'hour': 24, 'minute': 60, 'second': 60}
 	if (granularity not in granularities):
@@ -369,6 +453,7 @@ def distance_of_time_in_words(from_time, to_time=0, granularity='second', round=
 		from_time = dt.fromtimestamp((time.time() + from_time))
 	if isinstance(to_time, int):
 		to_time = dt.fromtimestamp((time.time() + to_time))
+		
 	if (from_time > to_time):
 		s = from_time
 		from_time = to_time
@@ -376,8 +461,12 @@ def distance_of_time_in_words(from_time, to_time=0, granularity='second', round=
 	elif (from_time == to_time):
 		return ('0 ' + _pluralize_granularity(granularity))
 	deltas = {'century': 0, 'decade': 0, 'year': 0, 'month': 0, 'day': 0, 'hour': 0, 'minute': 0, 'second': 0}
+	
+	
 	for field in ['month', 'hour', 'day', 'minute', 'second']:
 		deltas[field] = (getattr(to_time, field) - getattr(from_time, field))
+	
+	
 	delta_year = (to_time.year - from_time.year)
 	if (delta_year >= 100):
 		deltas['century'] = (delta_year // 100)
@@ -387,6 +476,8 @@ def distance_of_time_in_words(from_time, to_time=0, granularity='second', round=
 		deltas['year'] = (delta_year % 10)
 	carry_over = [('second', 'minute', granularity_size['second']), ('minute', 'hour', granularity_size['minute']), ('hour', 'day', granularity_size['hour'])]
 	_process_carryover(deltas, carry_over)
+	
+	
 	month_carry = [None, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 	if (deltas['day'] < 0):
 		deltas['month'] -= 1
@@ -396,6 +487,8 @@ def distance_of_time_in_words(from_time, to_time=0, granularity='second', round=
 			deltas['day'] += month_carry[from_time.month]
 	carry_over = [('month', 'year', granularity_size['month']), ('year', 'decade', granularity_size['year']), ('decade', 'century', granularity_size['decade'])]
 	_process_carryover(deltas, carry_over)
+	
+	
 	print(deltas)
 	return_strings = []
 	for g in granularities:
@@ -422,12 +515,29 @@ def distance_of_time_in_words(from_time, to_time=0, granularity='second', round=
 			return_strings.append(_delta_string(delta, g))
 	if (len(return_strings) == 1):
 		return return_strings[0]
-	print(return_strings)
-	return ((', '.join(return_strings[:(- 1)]) + ' and ') + return_strings[(- 1)])
+	if dict_only:
+		return return_strings
+	else:
+		print(return_strings)
+		return ((', '.join(return_strings[:(- 1)]) + ' and ') + return_strings[(- 1)])
 
 def time_ago_in_words(from_time, granularity='second', round=False):
-	'\n\tReturn approximate-time-distance string for ``from_time`` till now.\n\n\tSame as ``distance_of_time_in_words`` but the endpoint is now.\n\t'
+	"""
+	Return approximate-time-distance string for ``from_time`` till now.
+	Same as ``distance_of_time_in_words`` but the endpoint is now.'
+	
+	:param from_time:
+	:param granularity:
+	:param round:
+	:return:
+	"""
 	return distance_of_time_in_words(from_time, dt.now(), granularity, round)
+
+
+
+################
+
+
 DATE_BAS_COMPLETE = '%Y%m%d'
 DATE_EXT_COMPLETE = '%Y-%m-%d'
 DATE_BAS_WEEK_COMPLETE = '%YW%W%w'
@@ -480,19 +590,23 @@ strings = [('DATE_BAS_COMPLETE', '%Y%m%d'),
            ('D_ALT_EXT_ORD', 'P%Y-%jT%H:%M:%S'), ('D_DEFAULT', 'P%P'), ('D_WEEK', 'P%p'), ('TIME_BAS_COMPLETE', '%H%M%S'),
            ('TIME_BAS_MINUTE', '%H%M'), ('TIME_EXT_COMPLETE', '%H:%M:%S'), ('TIME_EXT_MINUTE', '%H:%M'),
            ('TIME_HOUR', '%H'), ('TZ_BAS', '%z'), ('TZ_EXT', '%Z'), ('TZ_HOUR', '%h')]
-DATES = [re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})-(?P<month>[0-9]{2})-(?P<day>[0-9]{2})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})(?P<month>[0-9]{2})(?P<day>[0-9]{2})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})-W(?P<week>[0-9]{2})-(?P<day>[0-9]{1})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})W(?P<week>[0-9]{2})(?P<day>[0-9]{1})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})-(?P<day>[0-9]{3})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})(?P<day>[0-9]{3})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})-W(?P<week>[0-9]{2})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})W(?P<week>[0-9]{2})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})-(?P<month>[0-9]{2})'), re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})'), re.compile('(?P<sign>[+-]){0}(?P<century>[0-9]{2})')]
-TIMES = [re.compile('T?(?P<hour>[0-9]{2}):(?P<minute>[0-9]{2}):(?P<second>[0-9]{2}([,.][0-9]+)?)(?P<tzname>(Z|(?P<tzsign>[+-])(?P<tzhour>[0-9]{2})(:(?P<tzmin>[0-9]{2}))?)?)'), re.compile('T?(?P<hour>[0-9]{2})(?P<minute>[0-9]{2})(?P<second>[0-9]{2}([,.][0-9]+)?)(?P<tzname>(Z|(?P<tzsign>[+-])(?P<tzhour>[0-9]{2})(:(?P<tzmin>[0-9]{2}))?)?)'), re.compile('T?(?P<hour>[0-9]{2}):(?P<minute>[0-9]{2}([,.][0-9]+)?)(?P<tzname>(Z|(?P<tzsign>[+-])(?P<tzhour>[0-9]{2})(:(?P<tzmin>[0-9]{2}))?)?)'), re.compile('T?(?P<hour>[0-9]{2})(?P<minute>[0-9]{2}([,.][0-9]+)?)(?P<tzname>(Z|(?P<tzsign>[+-])(?P<tzhour>[0-9]{2})(:(?P<tzmin>[0-9]{2}))?)?)'), re.compile('T?(?P<hour>[0-9]{2}([,.][0-9]+)?)(?P<tzname>(Z|(?P<tzsign>[+-])(?P<tzhour>[0-9]{2})(:(?P<tzmin>[0-9]{2}))?)?)')]
+DATES = [re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})-(?P<month>[0-9]{2})-(?P<day>[0-9]{2})'),
+         re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})(?P<month>[0-9]{2})(?P<day>[0-9]{2})'),
+         re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})-W(?P<week>[0-9]{2})-(?P<day>[0-9]{1})'),
+         re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})W(?P<week>[0-9]{2})(?P<day>[0-9]{1})'),
+         re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})-(?P<day>[0-9]{3})'),
+         re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})(?P<day>[0-9]{3})'),
+         re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})-W(?P<week>[0-9]{2})'),
+         re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})W(?P<week>[0-9]{2})'),
+         re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})-(?P<month>[0-9]{2})'),
+         re.compile('(?P<sign>[+-]){0}(?P<year>[0-9]{4})'),
+         re.compile('(?P<sign>[+-]){0}(?P<century>[0-9]{2})')]
+TIMES = [re.compile('T?(?P<hour>[0-9]{2}):(?P<minute>[0-9]{2}):(?P<second>[0-9]{2}([,.][0-9]+)?)(?P<tzname>(Z|(?P<tzsign>[+-])(?P<tzhour>[0-9]{2})(:(?P<tzmin>[0-9]{2}))?)?)'),
+         re.compile('T?(?P<hour>[0-9]{2})(?P<minute>[0-9]{2})(?P<second>[0-9]{2}([,.][0-9]+)?)(?P<tzname>(Z|(?P<tzsign>[+-])(?P<tzhour>[0-9]{2})(:(?P<tzmin>[0-9]{2}))?)?)'),
+         re.compile('T?(?P<hour>[0-9]{2}):(?P<minute>[0-9]{2}([,.][0-9]+)?)(?P<tzname>(Z|(?P<tzsign>[+-])(?P<tzhour>[0-9]{2})(:(?P<tzmin>[0-9]{2}))?)?)'),
+         re.compile('T?(?P<hour>[0-9]{2})(?P<minute>[0-9]{2}([,.][0-9]+)?)(?P<tzname>(Z|(?P<tzsign>[+-])(?P<tzhour>[0-9]{2})(:(?P<tzmin>[0-9]{2}))?)?)'),
+         re.compile('T?(?P<hour>[0-9]{2}([,.][0-9]+)?)(?P<tzname>(Z|(?P<tzsign>[+-])(?P<tzhour>[0-9]{2})(:(?P<tzmin>[0-9]{2}))?)?)')]
 
-def fmt(s, pattern='%{0}', date_time=None):
-	if (date_time is None):
-		formatted = dt.now().strftime(pattern.format(s))
-	else:
-		try:
-			formatted = dt(date_time).strftime(pattern.format(s))
-		except TypeError:
-			formatted = None
-	return formatted
-lookup_fmt = partial(fmt, pattern='{0}    %{0}')
 
 def fmt_timestamp(s):
 	try:

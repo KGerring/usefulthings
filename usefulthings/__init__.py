@@ -1,3 +1,7 @@
+#!/usr/bin/env
+# -*- coding: utf-8 -*-
+
+
 """ImportantThings - ImportantThings I use frequently (meant for private use)"""
 
 __version__ = '0.1.0'

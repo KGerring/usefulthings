@@ -102,6 +102,17 @@ mail_message = """mdfind 'kMDItemKind="Mail Message"cd'"""
 
 find_pixel_each = """mdfind -0 "kMDItemFocalLength == '*'" | xargs -0 mdls | grep -E '(PixelHeight|DisplayName|PixelWidth)'"""
 
+params = ['mdls']
+attrs = ['kMDItemPath', 'kMDItemUserTags', 'kMDItemFSContentChangeDate', 'kMDItemContentModificationDate']
+params.extend(['-plist', '-'])
+params.append(obj)
+cmm = subprocess.list2cmdline(params)
+from plistlib import loads
+
+
+LS = "mdls [-name attributeName] [-raw [-nullMarker markerString]] file"
+
+
 PA = Popen(['mdfind',
             '-0',
             "kMDItemFocalLength == '*'"], stdout=-1, stderr=-1)

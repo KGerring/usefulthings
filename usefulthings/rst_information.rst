@@ -6,6 +6,17 @@
 Title
 =====
 
+-  `param` or arg
+-  `type` of param
+-  `var` descr of a variable
+-  `vartype` typ of var
+-  `returns` or return
+-  `rtype` returntype
+-  `raises` errorname if problem
+
+
+		``regex.search('^enable\=(.+)', R, regex.M).group(1).split(',')``
+
 +------------------------+------------+----------+----------+
 | Header row, column 1   | Header 2   | Header 3 | Header 4 |
 | (header rows optional) |            |          |          |
@@ -18,6 +29,7 @@ Title
 +------------------------+ span rows. | - contain           |
 | body row 4             |            | - body elements.    |
 +------------------------+------------+---------------------+
+
 
 
 
