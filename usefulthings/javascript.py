@@ -1,7 +1,7 @@
 #!/usr/bin/env
 # -*- coding: utf-8 -*-
 # filename = javascript
-# author=SluttyScience
+# author=KGerring
 # date = 7/13/17
 from startups import *
 import sys, os

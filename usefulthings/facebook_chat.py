@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # filename = facebook_chat
-# author=SluttyScience
+# author=KGerring
 # date = 6/23/17
 from startups import *
 import sys, os

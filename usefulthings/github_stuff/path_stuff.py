@@ -3,7 +3,7 @@
 # filename = path_stuff
 # author=AutisticScreeching
 # date = 4/27/17
-from __future__ import absolute_import
+from __future__ import absolute_import # isort:skip
 import sys, os, os.path,stat
 import posix
 from py._path.local import FSBase, LocalPath, map_as_list, copystat, copymode, Stat, PosixPath

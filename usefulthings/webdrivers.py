@@ -1,7 +1,7 @@
 #!/usr/bin/env
 # -*- coding: utf-8 -*-
 # filename = webdrivers
-# author=SluttyScience
+# author=KGerring
 # date = 7/8/17
 from startups import *
 import sys, os

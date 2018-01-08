@@ -1,11 +1,11 @@
 #!/usr/bin/env
 # -*- coding: utf-8 -*-
 # filename = algolia
-# author=SluttyScience
+# author=KGerring
 # author_email='KGerring@gmail.com'
 # date = 11/10/17
 """ filename = algolia"""
-from __future__ import absolute_import, unicode_literals
+from __future__ import absolute_import, unicode_literals # isort:skip
 from startups import *
 import sys, os
 import regex

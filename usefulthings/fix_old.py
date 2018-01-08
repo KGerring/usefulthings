@@ -7,7 +7,7 @@ import sys, os
 import ast, _ast
 from astunparse import unparse
 import re, regex
-from kgerringrc import *
+#from kgerringrc import *
 from tempfile import NamedTemporaryFile
 from shutil import copyfile, move
 from guidata import qapplication

@@ -1,12 +1,10 @@
 #!/usr/bin/env
 # -*- coding: utf-8 -*-
 # filename = tabulate_stuff
-# author=SluttyScience
+# author=KGerring
 # date = 7/18/17
 """ filename = tabulate_stuff"""
-from __future__ import print_function
-from __future__ import unicode_literals
-from __future__ import absolute_import, unicode_literals
+from __future__ import print_function, absolute_import, unicode_literals # isort:skip
 from startups import *
 import sys, os
 import io, re, wcwidth, regex

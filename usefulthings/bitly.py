@@ -43,7 +43,7 @@ SCRIPTS = dict(
 
 AS = Foundation.NSAppleScript.alloc().initWithSource_(
 	'tell application "Google Chrome" to return URL of active tab of front window')
-e = AS.executeAndReturnError_(None)[0].stringValue()
+#e = AS.executeAndReturnError_(None)[0].stringValue()
 
 
 API_PATH = dict(

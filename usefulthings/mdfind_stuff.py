@@ -1,11 +1,11 @@
 #!/usr/bin/env
 # -*- coding: utf-8 -*-
 # filename = mdfind_stuff
-# author=SluttyScience
+# author=KGerring
 # author_email=''
 # date = 11/9/17
 """ filename = mdfind_stuff"""
-from __future__ import absolute_import, unicode_literals
+from __future__ import absolute_import, unicode_literals # isort:skip
 from startups import *
 import sys, os
 import regex
