@@ -7,96 +7,517 @@ algolia
 =======
 
 
-a
--
-'''
-code          code object
- |          callcount     how many times this was called
- |          reccallcount  how many times called recursively
- |          totaltime     total time in this entry
- |          inlinetime    inline time in this entry (not in subcalls)
- |          calls         details of the calls
-
-
-			code          called code object
- |          callcount     how many times this is called
- |          reccallcount  how many times this is called recursively
- |          totaltime     total time spent in this call
- |          inlinetime    inline time (not in further subcalls)
-
-
-def func_to_id(code):
-	func = cProfile.label(code)
-	i = id(code)
-
-def snapshot_stats(self):
-        entries = self.getstats()
-        self.stats = {}
-        callersdicts = {}
-        # call information
-        for entry in entries:
-            func = cProfile.label(entry.code)
-            nc = entry.callcount         # ncalls column of pstats (before '/')
-            cc = nc - entry.reccallcount # ncalls column of pstats (after '/')
-            tt = entry.inlinetime        # tottime column of pstats
-            ct = entry.totaltime         # cumtime column of pstats
-            callers = {}
-            callersdicts[id(entry.code)] = callers
-            self.stats[func] = cc, nc, tt, ct, callers
-        # subcall information
-        for entry in entries:
-            if entry.calls:
-                func = cProfile.label(entry.code)
-                for subentry in entry.calls:
-                    try:
-                        callers = callersdicts[id(subentry.code)]
-                    except KeyError:
-                        continue
-                    nc = subentry.callcount
-                    cc = nc - subentry.reccallcount
-                    tt = subentry.inlinetime
-                    ct = subentry.totaltime
-                    if func in callers:
-                        prev = callers[func]
-                        nc += prev[0]
-                        cc += prev[1]
-                        tt += prev[2]
-                        ct += prev[3]
-                    callers[func] = nc, cc, tt, ct
-    # The following two methods can be called by clients to use
-    # a profiler to profile a statement, given as a string.
-
-
-
-'''
-
-
-
+search
+------
+  - analytics
+  - analyticsTags
+  - aroundLatLng
+  - aroundLatLngViaIP
+  - aroundPrecision
+  - aroundRadius
+  - clickAnalytics
+  - enableRules_
+  - facetFilters_
+  - facetingAfterDistinct
+  - facets
+  - filters_
+  - getRankingInfo
+  - insideBoundingBox
+  - insidePolygon
+  - length
+  - minimumAroundRadius
+  - numericFilters_
+  - offset
+  - optionalFilters_
+  - page
+  - percentileComputation
+  - query
+  - queryType
+  - restrictSearchableAttributes_
+  - ruleContexts_
+  - setting
+  - settings
+  - sumOrFiltersScores_
+  - synonyms
 
 settings
 --------
+  - allowCompressionOfIntegerArray_
+  - attributeForDistinct
+  - attributesForFaceting_
+  - camelCaseAttributes
+  - customRanking
+  - decompoundedAttributes
+  - disablePrefixOnAttributes
+  - disableTypoToleranceOnWords
+  - numericAttributesForFiltering_
+  - paginationLimitedTo
+  - ranking_
+  - replicas
+  - search
+  - searchableAttributes_
+  - separatorsToIndex
+  - unretrievableAttributes_
 
-- searchableAttributes
-- paginationLimitedTo
-- maxValuesPerFacet
-- hitsPerPage
-- highlightPostTag
-- highlightPreTag
-- attributesToSnippet
-- attributesToRetrieve
-- attributesToHighlight
-- attributesForFaceting
-	searchable(attributeName)
-	If you only need the filtering features, you can take advantage of filterOnly(attribute)
+search & settings
+-----------------
+  - advancedSyntax_
+  - allowTyposOnNumericTokens
+  - attributesToHighlight
+  - attributesToRetrieve_
+  - attributesToSnippet
+  - disableExactOnAttributes
+  - disableTypoToleranceOnAttributes
+  - distinct
+  - exactOnSingleWordQuery
+  - highlightPostTag
+  - highlightPreTag
+  - hitsPerPage
+  - ignorePlurals
+  - maxFacetHits
+  - maxValuesPerFacet
+  - minProximity
+  - minWordSizefor1Typo
+  - minWordSizefor2Typos
+  - optionalWords
+  - removeStopWords
+  - removeWordsIfNoResults
+  - replaceSynonymsInHighlight
+  - responseFields
+  - restrictHighlightAndSnippetArrays
+  - snippetEllipsisText
+  - sortFacetValuesBy
+  - typoTolerance
 
-- attributeForDistinct
-- advancedSyntax True/False
--restrictSearchableAttributes
-- sortFacetValuesBy (alpha/count)
+
+Attributes
+^^^^^^^^^^
+
+.. _searchableAttributes:
+
+searchableAttributes
+++++++++++++++++++++
+:scope: settings
+:type: array of strings
+:default: []
+:formerly: attributesToIndex
+
+To assign the same priority to several attributes, pass them within the same string, separated by commas
+`'a,b', 'c'`
+Within a given attribute, matches near the beginning of the text are considered more important than matches near the end. use `unordered`
 
 
-search
-------
+.. _attributesForFaceting:
+
+attributesForFaceting
++++++++++++++++++++++
+:scope: settings
+:type: array of strings
+:default: []
+:description: List of attributes you want to use for faceting.
+
+
+
+.. _unretrievableAttributes:
+
+unretrievableAttributes
++++++++++++++++++++++++
+:scope: settings
+:type: array of strings
+:default: []
+:description: List of attributes that cannot be retrieved at query time.
+
+
+
+.. _attributesToRetrieve:
+
+attributesToRetrieve
+++++++++++++++++++++
+:scope: settings search
+:type: array of strings
+:default: "*"
+:formerly: attributes
+:description: List of object attributes you want to retrieve
+
+
+.. _restrictSearchableAttributes:
+
+restrictSearchableAttributes
+++++++++++++++++++++++++++++
+:scope: search
+:type: array of strings
+:default: all attributes in searchableAttributes_
+
+It must be a subset of the searchableAttributes index setting
+`restrictSearchableAttributes` is a search time parameter, it will only affect the current query.
+It will not override your index settings.
+
+
+Ranking
+^^^^^^^
+
+.. _ranking:
+
+ranking
++++++++
+:scope: settings
+:type: array of strings
+:default: ["typo", "geo", "words", "filters", "proximity", "attribute", "exact", "custom"]
+:description: Controls the way results are sorted.
+
+The following ranking criteria are available:
+
+typo
+    Sort by increasing number of typos.
+geo
+    Sort by decreasing geo distance when performing a geo search; ignored when not performing a geo search.
+words
+    Sort by decreasing number of matched query words. This parameter is useful when you use the optionalWords_ query parameter to rank hits with the most matched words first.
+filters
+  The filter criteria is the sum of scores for filters matched by one hit. In case of OR filters, only one score is taken in account even if the two filters match.
+proximity
+    Sort by increasing proximity of query words in hits.
+attribute
+    Sort according to the order of attributes defined by searchableAttributes_
+`exact`
+    If the query contains only one word: The behavior depends on the value of exactOnSingleWordQuery_. If the query contains multiple words: Sort by decreasing number of words that matched exactly. What is considered to be an exact match depends on the value of alternativesAsExact_
+
+
+customRanking
++++++++++++++
+
+replicas
+++++++++
+
+
+
+
+
+Filtering
+^^^^^^^^^
+
+.. _tagFilters:
+.. _filters:
+.. _numericFilters:
+
+filters
++++++++
+:scope: search
+
+  - Numeric *comparison* `${attributeName} ${operator} ${operand}`
+  - Numeric *range* `${attributeName}:${lowerBound} TO ${upperBound}`
+  - Facet facetFilter `${facetName}:${facetValue}` case-sensitive
+  - tags Tag `_tags:${value}` case-sensitive.
+  - If no attribute name is specified, the filter applies to \_tags
+  - For performance reasons, filter expressions are limited to a conjunction (ANDs) of disjunctions (ORs).
+
+.. code:: python
+
+    results = index.search('query', {'filters': '(category:Book OR category:Ebook) AND _tags:published'})
+
+
+.. _facetFilters:
+
+facetFilters
+++++++++++++
+:scope: search
+
+`{'facetFilters': ['category:Book', 'author:John Doe']}`
+  - in form `${attributeName}:${value}`
+  - if regular list it is with *AND*
+  - for *OR* nest the list.
+    + [["category:Book", "category:Movie"], "author:John Doe"]  is `(category:Book OR category:Movie) AND author:"John Doe"`
+  - Negation is with \- before the value
+    + `["category:Book", "category:-Movie"]` is `category:Book AND NOT category:Movie`
+  - see also filters_
+
+
+
+.. _optionalFilters:
+
+optionalFilters
++++++++++++++++
+:scope: search
+:default: []
+
+Optional filters behave much like regular filters, except that results not matching the filter are not excluded altogether; they’re simply ranked lower in the result set.
+
+.. _sumOrFiltersScores:
+
+sumOrFiltersScores
+++++++++++++++++++
+:scope: search
+:type: bool
+:default: False
+
+Determines how to calculate the total score for filtering
+When `sumOrFiltersScores` is `false`, max score will be kept.
+When `sumOrFiltersScores` is `true`, score will be summed.
+
+Faceting
+^^^^^^^^
+facets
+++++++
+
+maxValuesPerFacet
++++++++++++++++++
+
+facetingAfterDistinct
++++++++++++++++++++++
+
+sortFacetValuesBy
++++++++++++++++++
+
+
+
+
+Highlight/Snippet
+^^^^^^^^^^^^^^^^^
+
+attributesToHighlight
++++++++++++++++++++++
+
+attributesToSnippet
++++++++++++++++++++
+
+highlightPreTag
++++++++++++++++
+
+highlightPostTag
+++++++++++++++++
+
+snippetEllipsisText
++++++++++++++++++++
+
+restrictHighlightAndSnippetArrays
++++++++++++++++++++++++++++++++++
+
+
+
+Pagination
+^^^^^^^^^^
+
+page
+++++
+
+hitsPerPage
++++++++++++
+
+offset
+++++++
+
+length
+++++++
+
+paginationLimitedTo
++++++++++++++++++++
+
+
+
+
+Typos
+^^^^^
+
+minWordSizefor1Typo
++++++++++++++++++++
+
+minWordSizefor2Typos
+++++++++++++++++++++
+
+typoTolerance
++++++++++++++
+
+allowTyposOnNumericTokens
++++++++++++++++++++++++++
+
+ignorePlurals
++++++++++++++
+
+disableTypoToleranceOnAttributes
+++++++++++++++++++++++++++++++++
+
+disableTypoToleranceOnWords
++++++++++++++++++++++++++++
+
+separatorsToIndex
++++++++++++++++++
+
+
+Query Strategy
+^^^^^^^^^^^^^^
+
+queryType
++++++++++
+
+removeWordsIfNoResults
+++++++++++++++++++++++
+
+advancedSyntax
+++++++++++++++
+
+optionalWords
++++++++++++++
+
+removeStopWords
++++++++++++++++
+
+disablePrefixOnAttributes
++++++++++++++++++++++++++
+
+disableExactOnAttributes
+++++++++++++++++++++++++
+
+.. _exactOnSingleWordQuery:
+
+exactOnSingleWordQuery
+++++++++++++++++++++++
+:scope: settings search
+:type: str
+:default: attribute
+:description: deals with how the `exact` criterion is decided in ranking_
+
+
+The following values are allowed:
+  - attribute: if the query string exactly matches an entire attribute value
+  - none: ignored on single word queries
+  - word: set to 1 if the query word is found in the record. Must be > 3 and not stop-word
+
+
+
+
+
+.. _alternativesAsExact:
+
+alternativesAsExact
++++++++++++++++++++
+:scope: setting search
+:type: array of strings
+:default: ["ignorePlurals", "singleWordSynonym"]
+:description: List of alternatives that should be considered an exact match by the exact ranking criterion.
+
+The following values are allowed:
+  - ignorePlurals : alternative words added by the ignorePlurals_ feature;
+  - multiWordsSynonym: multiple-words synonyms (example: "NY" = "New York").
+  - singleWordSynonym: single-word synonyms (example: "NY" = "NYC");
+
+
+Query Rules
+^^^^^^^^^^^
+
+.. _enableRules:
+
+enableRules
++++++++++++
+:scope: search settings
+:type: bool
+:default: True
+
+.. _ruleContexts:
+
+ruleContexts
+++++++++++++
+:scope: search
+:type: array of strings
+:default: []
+
+Enables contextual rules.
+
+
+
+
+Performance
+^^^^^^^^^^^
+
+.. _numericAttributesForFiltering:
+
+numericAttributesForFiltering
++++++++++++++++++++++++++++++
+:scope: settings
+:default: all numeric attributes
+:type: array of strings
+:formerly: **numericAttributesToIndex**
+:description: List of numeric attributes that can be used as numerical filters.
+
+
+If not specified, all numeric attributes are automatically indexed and available as numerical filters
+If specified, only attributes explicitly listed are available as numerical filters.
+If empty, no numerical filters are allowed.
+If you don’t need filtering on some of your numerical attributes, you can use `numericAttributesForFiltering` to speed up the indexing.
+If you only need to filter on a numeric value based on equality (i.e. with the operators `=` or `!=`), you can speed up the indexing by specifying `equalOnly(${attributeName})`. Other operators will be disabled.
+
+
+.. _allowCompressionOfIntegerArray:
+
+allowCompressionOfIntegerArray
+++++++++++++++++++++++++++++++
+:scope: settings
+:type: bool
+:default: False
+
+Enables compression of large integer arrays.
+
+Advanced
+^^^^^^^^
+
+.. _advancedSyntax:
+
+advancedSyntax
+++++++++++++++
+:scope: settings search
+:type: bool
+:default: False
+:description: Enables the advanced-syntax stuff
+
+attributeForDistinct
+++++++++++++++++++++
+
+placeholders
+++++++++++++
+
+minProximity
+++++++++++++
+
+responseFields
+++++++++++++++
+
+maxFacetHits
+++++++++++++
+
+percentileComputation
++++++++++++++++++++++
+
+camelCaseAttributes
++++++++++++++++++++
+
+decompoundedAttributes
+++++++++++++++++++++++
+
+distinct
+++++++++
+
+getRankingInfo
+++++++++++++++
+
+clickAnalytics
+++++++++++++++
+
+analytics
++++++++++
+
+analyticsTags
++++++++++++++
+
+synonyms
+++++++++
+
+replaceSynonymsInHighlight
+++++++++++++++++++++++++++
+
+
+
+
+search-info
+-----------
 
 - page: Number of the page to retrieve.
 - hitsPerPage: Maximum number of hits per page
@@ -110,10 +531,9 @@ client
 
 .. code:: python
 
-	from algoliasearch import algoliasearch
-	client = algoliasearch.Client("YourApplicationID", 'YourAPIKey')
-
-index.set_settings({"customRanking": ["desc(followers)"]})
+    from algoliasearch import algoliasearch
+    client = algoliasearch.Client("YourApplicationID", 'YourAPIKey')
+    index.set_settings({"customRanking": ["desc(followers)"]})
 
 
 

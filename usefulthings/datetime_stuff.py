@@ -88,7 +88,7 @@ def get_local_tzfile():
 #'$time.this_week', '$time.this_week(+1)'
 
 
-EXEX = mdfind('modified:11/03/2017-11/10/2017 AND kind:Python Source')
+#EXEX = mdfind('modified:10/03/2017-11/10/2017 AND kind:Python Source')
 
 zoneinfo = dateutil.zoneinfo
 

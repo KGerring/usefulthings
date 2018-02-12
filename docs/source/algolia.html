@@ -1,0 +1,990 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
+<title>algolia</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7952 2016-07-26 18:15:59Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="algolia">
+<h1 class="title">algolia</h1>
+
+<!-- author KGerring -->
+<!-- filename algolia -->
+<!-- date = 11/27/17 -->
+<div class="section" id="search">
+<h1>search</h1>
+<blockquote>
+<ul class="simple">
+<li>analytics</li>
+<li>analyticsTags</li>
+<li>aroundLatLng</li>
+<li>aroundLatLngViaIP</li>
+<li>aroundPrecision</li>
+<li>aroundRadius</li>
+<li>clickAnalytics</li>
+<li><a class="reference internal" href="#enablerules">enableRules</a></li>
+<li><a class="reference internal" href="#facetfilters">facetFilters</a></li>
+<li>facetingAfterDistinct</li>
+<li>facets</li>
+<li><a class="reference internal" href="#filters">filters</a></li>
+<li>getRankingInfo</li>
+<li>insideBoundingBox</li>
+<li>insidePolygon</li>
+<li>length</li>
+<li>minimumAroundRadius</li>
+<li><a class="reference internal" href="#numericfilters">numericFilters</a></li>
+<li>offset</li>
+<li><a class="reference internal" href="#optionalfilters">optionalFilters</a></li>
+<li>page</li>
+<li>percentileComputation</li>
+<li>query</li>
+<li>queryType</li>
+<li><a class="reference internal" href="#restrictsearchableattributes">restrictSearchableAttributes</a></li>
+<li><a class="reference internal" href="#rulecontexts">ruleContexts</a></li>
+<li>setting</li>
+<li>settings</li>
+<li><a class="reference internal" href="#sumorfiltersscores">sumOrFiltersScores</a></li>
+<li>synonyms</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="settings">
+<h1>settings</h1>
+<blockquote>
+<ul class="simple">
+<li><a class="reference internal" href="#allowcompressionofintegerarray">allowCompressionOfIntegerArray</a></li>
+<li>attributeForDistinct</li>
+<li><a class="reference internal" href="#attributesforfaceting">attributesForFaceting</a></li>
+<li>camelCaseAttributes</li>
+<li>customRanking</li>
+<li>decompoundedAttributes</li>
+<li>disablePrefixOnAttributes</li>
+<li>disableTypoToleranceOnWords</li>
+<li><a class="reference internal" href="#numericattributesforfiltering">numericAttributesForFiltering</a></li>
+<li>paginationLimitedTo</li>
+<li><a class="reference internal" href="#id6">ranking</a></li>
+<li>replicas</li>
+<li>search</li>
+<li><a class="reference internal" href="#searchableattributes">searchableAttributes</a></li>
+<li>separatorsToIndex</li>
+<li><a class="reference internal" href="#unretrievableattributes">unretrievableAttributes</a></li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="search-settings">
+<h1>search &amp; settings</h1>
+<blockquote>
+<ul class="simple">
+<li>advancedSyntax</li>
+<li>allowTyposOnNumericTokens</li>
+<li>attributesToHighlight</li>
+<li><a class="reference internal" href="#attributestoretrieve">attributesToRetrieve</a></li>
+<li>attributesToSnippet</li>
+<li>disableExactOnAttributes</li>
+<li>disableTypoToleranceOnAttributes</li>
+<li>distinct</li>
+<li>exactOnSingleWordQuery</li>
+<li>highlightPostTag</li>
+<li>highlightPreTag</li>
+<li>hitsPerPage</li>
+<li>ignorePlurals</li>
+<li>maxFacetHits</li>
+<li>maxValuesPerFacet</li>
+<li>minProximity</li>
+<li>minWordSizefor1Typo</li>
+<li>minWordSizefor2Typos</li>
+<li>optionalWords</li>
+<li>removeStopWords</li>
+<li>removeWordsIfNoResults</li>
+<li>replaceSynonymsInHighlight</li>
+<li>responseFields</li>
+<li>restrictHighlightAndSnippetArrays</li>
+<li>snippetEllipsisText</li>
+<li>sortFacetValuesBy</li>
+<li>typoTolerance</li>
+</ul>
+</blockquote>
+<div class="section" id="attributes">
+<h2>Attributes</h2>
+<div class="section" id="id1">
+<span id="searchableattributes"></span><h3>searchableAttributes</h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scope:</th><td class="field-body">settings</td>
+</tr>
+<tr class="field"><th class="field-name">type:</th><td class="field-body">array of strings</td>
+</tr>
+<tr class="field"><th class="field-name">default:</th><td class="field-body">[]</td>
+</tr>
+<tr class="field"><th class="field-name">formerly:</th><td class="field-body">attributesToIndex</td>
+</tr>
+</tbody>
+</table>
+<p>To assign the same priority to several attributes, pass them within the same string, separated by commas
+<cite>'a,b', 'c'</cite>
+Within a given attribute, matches near the beginning of the text are considered more important than matches near the end. use <cite>unordered</cite></p>
+</div>
+<div class="section" id="id2">
+<span id="attributesforfaceting"></span><h3>attributesForFaceting</h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scope:</th><td class="field-body">settings</td>
+</tr>
+<tr class="field"><th class="field-name">type:</th><td class="field-body">array of strings</td>
+</tr>
+<tr class="field"><th class="field-name">default:</th><td class="field-body">[]</td>
+</tr>
+<tr class="field"><th class="field-name">description:</th><td class="field-body">List of attributes you want to use for faceting.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<span id="unretrievableattributes"></span><h3>unretrievableAttributes</h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scope:</th><td class="field-body">settings</td>
+</tr>
+<tr class="field"><th class="field-name">type:</th><td class="field-body">array of strings</td>
+</tr>
+<tr class="field"><th class="field-name">default:</th><td class="field-body">[]</td>
+</tr>
+<tr class="field"><th class="field-name">description:</th><td class="field-body">List of attributes that cannot be retrieved at query time.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<span id="attributestoretrieve"></span><h3>attributesToRetrieve</h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scope:</th><td class="field-body">settings search</td>
+</tr>
+<tr class="field"><th class="field-name">type:</th><td class="field-body">array of strings</td>
+</tr>
+<tr class="field"><th class="field-name">default:</th><td class="field-body">&quot;*&quot;</td>
+</tr>
+<tr class="field"><th class="field-name">formerly:</th><td class="field-body">attributes</td>
+</tr>
+<tr class="field"><th class="field-name">description:</th><td class="field-body">List of object attributes you want to retrieve</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id5">
+<span id="restrictsearchableattributes"></span><h3>restrictSearchableAttributes</h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scope:</th><td class="field-body">search</td>
+</tr>
+<tr class="field"><th class="field-name">type:</th><td class="field-body">array of strings</td>
+</tr>
+<tr class="field"><th class="field-name">default:</th><td class="field-body">all attributes in <a class="reference internal" href="#searchableattributes">searchableAttributes</a></td>
+</tr>
+</tbody>
+</table>
+<p>It must be a subset of the searchableAttributes index setting
+<cite>restrictSearchableAttributes</cite> is a search time parameter, it will only affect the current query.
+It will not override your index settings.</p>
+</div>
+</div>
+<div class="section" id="ranking">
+<h2>Ranking</h2>
+<div class="section" id="id7">
+<span id="id6"></span><h3>ranking</h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scope:</th><td class="field-body">settings</td>
+</tr>
+<tr class="field"><th class="field-name">type:</th><td class="field-body">array of strings</td>
+</tr>
+<tr class="field"><th class="field-name">default:</th><td class="field-body">[&quot;typo&quot;, &quot;geo&quot;, &quot;words&quot;, &quot;filters&quot;, &quot;proximity&quot;, &quot;attribute&quot;, &quot;exact&quot;, &quot;custom&quot;]</td>
+</tr>
+<tr class="field"><th class="field-name">description:</th><td class="field-body">Controls the way results are sorted.</td>
+</tr>
+</tbody>
+</table>
+<p>The following ranking criteria are available:</p>
+<dl class="docutils">
+<dt>typo</dt>
+<dd>Sort by increasing number of typos.</dd>
+<dt>geo</dt>
+<dd>Sort by decreasing geo distance when performing a geo search; ignored when not performing a geo search.</dd>
+<dt>words</dt>
+<dd>Sort by decreasing number of matched query words. This parameter is useful when you use the <a class="reference internal" href="#optionalwords">optionalWords</a> query parameter to rank hits with the most matched words first.</dd>
+<dt>filters</dt>
+<dd>The filter criteria is the sum of scores for filters matched by one hit. In case of OR filters, only one score is taken in account even if the two filters match.</dd>
+<dt>proximity</dt>
+<dd>Sort by increasing proximity of query words in hits.</dd>
+<dt>attribute</dt>
+<dd>Sort according to the order of attributes defined by <a class="reference internal" href="#searchableattributes">searchableAttributes</a></dd>
+<dt><cite>exact</cite></dt>
+<dd>If the query contains only one word: The behavior depends on the value of <a class="reference internal" href="#exactonsinglewordquery">exactOnSingleWordQuery</a>. If the query contains multiple words: Sort by decreasing number of words that matched exactly. What is considered to be an exact match depends on the value of <a class="reference internal" href="#alternativesasexact">alternativesAsExact</a></dd>
+</dl>
+</div>
+<div class="section" id="customranking">
+<h3>customRanking</h3>
+</div>
+<div class="section" id="replicas">
+<h3>replicas</h3>
+</div>
+</div>
+<div class="section" id="filtering">
+<h2>Filtering</h2>
+<div class="section" id="id8">
+<span id="numericfilters"></span><span id="filters"></span><span id="tagfilters"></span><h3>filters</h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scope:</th><td class="field-body"><p class="first">search</p>
+<ul class="last simple">
+<li>Numeric <em>comparison</em> <cite>${attributeName} ${operator} ${operand}</cite></li>
+<li>Numeric <em>range</em> <cite>${attributeName}:${lowerBound} TO ${upperBound}</cite></li>
+<li>Facet facetFilter <cite>${facetName}:${facetValue}</cite> case-sensitive</li>
+<li>tags Tag <cite>_tags:${value}</cite> case-sensitive.</li>
+<li>If no attribute name is specified, the filter applies to _tags</li>
+<li>For performance reasons, filter expressions are limited to a conjunction (ANDs) of disjunctions (ORs).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="code python literal-block">
+<span class="name">results</span> <span class="operator">=</span> <span class="name">index</span><span class="operator">.</span><span class="name">search</span><span class="punctuation">(</span><span class="literal string single">'query'</span><span class="punctuation">,</span> <span class="punctuation">{</span><span class="literal string single">'filters'</span><span class="punctuation">:</span> <span class="literal string single">'(category:Book OR category:Ebook) AND _tags:published'</span><span class="punctuation">})</span>
+</pre>
+</div>
+<div class="section" id="id9">
+<span id="facetfilters"></span><h3>facetFilters</h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scope:</th><td class="field-body">search</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><cite>{'facetFilters': ['category:Book', 'author:John Doe']}</cite></dt>
+<dd><ul class="first last simple">
+<li>in form <cite>${attributeName}:${value}</cite></li>
+<li>if regular list it is with <em>AND</em></li>
+<li>for <em>OR</em> nest the list.
++ [[&quot;category:Book&quot;, &quot;category:Movie&quot;], &quot;author:John Doe&quot;]  is <cite>(category:Book OR category:Movie) AND author:&quot;John Doe&quot;</cite></li>
+<li>Negation is with - before the value
++ <cite>[&quot;category:Book&quot;, &quot;category:-Movie&quot;]</cite> is <cite>category:Book AND NOT category:Movie</cite></li>
+<li>see also <a class="reference internal" href="#filters">filters</a></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id10">
+<span id="optionalfilters"></span><h3>optionalFilters</h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scope:</th><td class="field-body">search</td>
+</tr>
+<tr class="field"><th class="field-name">default:</th><td class="field-body">[]</td>
+</tr>
+</tbody>
+</table>
+<p>Optional filters behave much like regular filters, except that results not matching the filter are not excluded altogether; they’re simply ranked lower in the result set.</p>
+</div>
+<div class="section" id="id11">
+<span id="sumorfiltersscores"></span><h3>sumOrFiltersScores</h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scope:</th><td class="field-body">search</td>
+</tr>
+<tr class="field"><th class="field-name">type:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field"><th class="field-name">default:</th><td class="field-body">False</td>
+</tr>
+</tbody>
+</table>
+<p>Determines how to calculate the total score for filtering
+When <cite>sumOrFiltersScores</cite> is <cite>false</cite>, max score will be kept.
+When <cite>sumOrFiltersScores</cite> is <cite>true</cite>, score will be summed.</p>
+</div>
+</div>
+<div class="section" id="faceting">
+<h2>Faceting</h2>
+<div class="section" id="facets">
+<h3>facets</h3>
+</div>
+<div class="section" id="maxvaluesperfacet">
+<h3>maxValuesPerFacet</h3>
+</div>
+<div class="section" id="facetingafterdistinct">
+<h3>facetingAfterDistinct</h3>
+</div>
+<div class="section" id="sortfacetvaluesby">
+<h3>sortFacetValuesBy</h3>
+</div>
+</div>
+<div class="section" id="highlight-snippet">
+<h2>Highlight/Snippet</h2>
+<div class="section" id="attributestohighlight">
+<h3>attributesToHighlight</h3>
+</div>
+<div class="section" id="attributestosnippet">
+<h3>attributesToSnippet</h3>
+</div>
+<div class="section" id="highlightpretag">
+<h3>highlightPreTag</h3>
+</div>
+<div class="section" id="highlightposttag">
+<h3>highlightPostTag</h3>
+</div>
+<div class="section" id="snippetellipsistext">
+<h3>snippetEllipsisText</h3>
+</div>
+<div class="section" id="restricthighlightandsnippetarrays">
+<h3>restrictHighlightAndSnippetArrays</h3>
+</div>
+</div>
+<div class="section" id="pagination">
+<h2>Pagination</h2>
+<div class="section" id="page">
+<h3>page</h3>
+</div>
+<div class="section" id="hitsperpage">
+<h3>hitsPerPage</h3>
+</div>
+<div class="section" id="offset">
+<h3>offset</h3>
+</div>
+<div class="section" id="length">
+<h3>length</h3>
+</div>
+<div class="section" id="paginationlimitedto">
+<h3>paginationLimitedTo</h3>
+</div>
+</div>
+<div class="section" id="typos">
+<h2>Typos</h2>
+<div class="section" id="minwordsizefor1typo">
+<h3>minWordSizefor1Typo</h3>
+</div>
+<div class="section" id="minwordsizefor2typos">
+<h3>minWordSizefor2Typos</h3>
+</div>
+<div class="section" id="typotolerance">
+<h3>typoTolerance</h3>
+</div>
+<div class="section" id="allowtyposonnumerictokens">
+<h3>allowTyposOnNumericTokens</h3>
+</div>
+<div class="section" id="ignoreplurals">
+<h3>ignorePlurals</h3>
+</div>
+<div class="section" id="disabletypotoleranceonattributes">
+<h3>disableTypoToleranceOnAttributes</h3>
+</div>
+<div class="section" id="disabletypotoleranceonwords">
+<h3>disableTypoToleranceOnWords</h3>
+</div>
+<div class="section" id="separatorstoindex">
+<h3>separatorsToIndex</h3>
+</div>
+</div>
+<div class="section" id="query-strategy">
+<h2>Query Strategy</h2>
+<div class="section" id="querytype">
+<h3>queryType</h3>
+</div>
+<div class="section" id="removewordsifnoresults">
+<h3>removeWordsIfNoResults</h3>
+</div>
+<div class="section" id="advancedsyntax">
+<h3>advancedSyntax</h3>
+</div>
+<div class="section" id="optionalwords">
+<h3>optionalWords</h3>
+</div>
+<div class="section" id="removestopwords">
+<h3>removeStopWords</h3>
+</div>
+<div class="section" id="disableprefixonattributes">
+<h3>disablePrefixOnAttributes</h3>
+</div>
+<div class="section" id="disableexactonattributes">
+<h3>disableExactOnAttributes</h3>
+</div>
+<div class="section" id="id12">
+<span id="exactonsinglewordquery"></span><h3>exactOnSingleWordQuery</h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scope:</th><td class="field-body">settings search</td>
+</tr>
+<tr class="field"><th class="field-name">type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field"><th class="field-name">default:</th><td class="field-body">attribute</td>
+</tr>
+<tr class="field"><th class="field-name">description:</th><td class="field-body">deals with how the <cite>exact</cite> criterion is decided in <a class="reference internal" href="#id6">ranking</a></td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>The following values are allowed:</dt>
+<dd><ul class="first last simple">
+<li>attribute: if the query string exactly matches an entire attribute value</li>
+<li>none: ignored on single word queries</li>
+<li>word: set to 1 if the query word is found in the record. Must be &gt; 3 and not stop-word</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id13">
+<span id="alternativesasexact"></span><h3>alternativesAsExact</h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scope:</th><td class="field-body">setting search</td>
+</tr>
+<tr class="field"><th class="field-name">type:</th><td class="field-body">array of strings</td>
+</tr>
+<tr class="field"><th class="field-name">default:</th><td class="field-body">[&quot;ignorePlurals&quot;, &quot;singleWordSynonym&quot;]</td>
+</tr>
+<tr class="field"><th class="field-name">description:</th><td class="field-body">List of alternatives that should be considered an exact match by the exact ranking criterion.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>The following values are allowed:</dt>
+<dd><ul class="first last simple">
+<li>ignorePlurals : alternative words added by the <a class="reference internal" href="#ignoreplurals">ignorePlurals</a> feature;</li>
+<li>multiWordsSynonym: multiple-words synonyms (example: &quot;NY&quot; = &quot;New York&quot;).</li>
+<li>singleWordSynonym: single-word synonyms (example: &quot;NY&quot; = &quot;NYC&quot;);</li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="query-rules">
+<h2>Query Rules</h2>
+<div class="section" id="id14">
+<span id="enablerules"></span><h3>enableRules</h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scope:</th><td class="field-body">search settings</td>
+</tr>
+<tr class="field"><th class="field-name">type:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field"><th class="field-name">default:</th><td class="field-body">True</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id15">
+<span id="rulecontexts"></span><h3>ruleContexts</h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scope:</th><td class="field-body">search</td>
+</tr>
+<tr class="field"><th class="field-name">type:</th><td class="field-body">array of strings</td>
+</tr>
+<tr class="field"><th class="field-name">default:</th><td class="field-body">[]</td>
+</tr>
+</tbody>
+</table>
+<p>Enables contextual rules.</p>
+</div>
+</div>
+<div class="section" id="performance">
+<h2>Performance</h2>
+<div class="section" id="id16">
+<span id="numericattributesforfiltering"></span><h3>numericAttributesForFiltering</h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scope:</th><td class="field-body">settings</td>
+</tr>
+<tr class="field"><th class="field-name">default:</th><td class="field-body">all numeric attributes</td>
+</tr>
+<tr class="field"><th class="field-name">type:</th><td class="field-body">array of strings</td>
+</tr>
+<tr class="field"><th class="field-name">formerly:</th><td class="field-body"><strong>numericAttributesToIndex</strong></td>
+</tr>
+<tr class="field"><th class="field-name">description:</th><td class="field-body">List of numeric attributes that can be used as numerical filters.</td>
+</tr>
+</tbody>
+</table>
+<p>If not specified, all numeric attributes are automatically indexed and available as numerical filters
+If specified, only attributes explicitly listed are available as numerical filters.
+If empty, no numerical filters are allowed.
+If you don’t need filtering on some of your numerical attributes, you can use <cite>numericAttributesForFiltering</cite> to speed up the indexing.
+If you only need to filter on a numeric value based on equality (i.e. with the operators <cite>=</cite> or <cite>!=</cite>), you can speed up the indexing by specifying <cite>equalOnly(${attributeName})</cite>. Other operators will be disabled.</p>
+</div>
+<div class="section" id="id17">
+<span id="allowcompressionofintegerarray"></span><h3>allowCompressionOfIntegerArray</h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scope:</th><td class="field-body">settings</td>
+</tr>
+<tr class="field"><th class="field-name">type:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field"><th class="field-name">default:</th><td class="field-body">False</td>
+</tr>
+</tbody>
+</table>
+<p>Enables compression of large integer arrays.</p>
+</div>
+</div>
+<div class="section" id="advanced">
+<h2>Advanced</h2>
+<div class="section" id="attributefordistinct">
+<h3>attributeForDistinct</h3>
+</div>
+<div class="section" id="placeholders">
+<h3>placeholders</h3>
+</div>
+<div class="section" id="minproximity">
+<h3>minProximity</h3>
+</div>
+<div class="section" id="responsefields">
+<h3>responseFields</h3>
+</div>
+<div class="section" id="maxfacethits">
+<h3>maxFacetHits</h3>
+</div>
+<div class="section" id="percentilecomputation">
+<h3>percentileComputation</h3>
+</div>
+<div class="section" id="camelcaseattributes">
+<h3>camelCaseAttributes</h3>
+</div>
+<div class="section" id="decompoundedattributes">
+<h3>decompoundedAttributes</h3>
+</div>
+<div class="section" id="distinct">
+<h3>distinct</h3>
+</div>
+<div class="section" id="getrankinginfo">
+<h3>getRankingInfo</h3>
+</div>
+<div class="section" id="clickanalytics">
+<h3>clickAnalytics</h3>
+</div>
+<div class="section" id="analytics">
+<h3>analytics</h3>
+</div>
+<div class="section" id="analyticstags">
+<h3>analyticsTags</h3>
+</div>
+<div class="section" id="synonyms">
+<h3>synonyms</h3>
+</div>
+<div class="section" id="replacesynonymsinhighlight">
+<h3>replaceSynonymsInHighlight</h3>
+</div>
+</div>
+</div>
+<div class="section" id="search-info">
+<h1>search-info</h1>
+<ul class="simple">
+<li>page: Number of the page to retrieve.</li>
+<li>hitsPerPage: Maximum number of hits per page</li>
+<li>offset:Offset of the first hit to return (zero-based)</li>
+<li>length: Maximum number of hits to return. (1000 is the maximum)</li>
+<li>paginationLimitedTo: Maximum number of hits accessible via pagination.</li>
+</ul>
+</div>
+<div class="section" id="client">
+<h1>client</h1>
+<pre class="code python literal-block">
+<span class="keyword namespace">from</span> <span class="name namespace">algoliasearch</span> <span class="keyword namespace">import</span> <span class="name">algoliasearch</span>
+<span class="name">client</span> <span class="operator">=</span> <span class="name">algoliasearch</span><span class="operator">.</span><span class="name">Client</span><span class="punctuation">(</span><span class="literal string double">&quot;YourApplicationID&quot;</span><span class="punctuation">,</span> <span class="literal string single">'YourAPIKey'</span><span class="punctuation">)</span>
+<span class="name">index</span><span class="operator">.</span><span class="name">set_settings</span><span class="punctuation">({</span><span class="literal string double">&quot;customRanking&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="literal string double">&quot;desc(followers)&quot;</span><span class="punctuation">]})</span>
+</pre>
+<table class="docutils footnote" frame="void" id="id18" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>This document was generated 2018-02-11T14:57:25 .</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</body>
+</html>

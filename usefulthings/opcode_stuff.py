@@ -27,6 +27,66 @@ from startups.helpers.decorators import return_as
 #from numba.analysis import CFGraph #_nodes,_preds, _succs,_edge_data,_entry_point
 #from numba.controlflow import ControlFlowAnalysis
 
+DIS_JOIN_PY37 = '/var/folders/33/x2sr5vwx2dv48zl7f0s3vynw0000gn/T/tmp3_jtpv3k'
+DIS_JOIN_PY36 = '/var/folders/33/x2sr5vwx2dv48zl7f0s3vynw0000gn/T/tmpt5y8og4z'
+
+
+
+NEW_INPY37 = """LOAD_METHOD(namei)
+Loads a method named co_names[namei] from TOS object.
+TOS is popped and method and TOS are pushed when interpreter can call unbound method directly.
+TOS will be used as the first argument (self) by CALL_METHOD.
+Otherwise, NULL and method is pushed (method is bound method or something else).
+
+New in version 3.7.
+
+CALL_METHOD(argc)
+Calls a method. argc is number of positional arguments.
+Keyword arguments are not supported.
+This opcode is designed to be used with LOAD_METHOD.
+Positional arguments are on top of the stack.
+Below them, two items described in LOAD_METHOD on the stack.
+All of them are popped and return value is pushed.
+
+New in ve"""
+
+LOAD_METHOD = 160
+CALL_METHOD = 161
+
+#get_instructions = Iterator for the opcodes in methods, functions or code
+#/Users/kristen/Downloads/Python-3.7.0a4/Lib
+
+#PickleShareDB
+#OrderedSet
+#fi = dill.dill._create_weakproxy(find, True)
+#dill.dill._create_weakref
+
+def _disassemble_recursive(co, *, file=None, depth=None):
+	import dis
+	
+	dis.disassemble(co, file=file)
+	if depth is None or depth > 0:
+		if depth is not None:
+			depth = depth - 1
+		for x in co.co_consts:
+			if hasattr(x, 'co_code'):
+				print(file=file)
+				print("Disassembly of %r:" % (x,), file=file)
+				_disassemble_recursive(x, file=file, depth=depth)
+
+
+def _disassemble_str(source, **kwargs):
+	"""Compile the source string, then disassemble the code object."""
+	import inspect
+	import dis
+	if not isinstance(source, str):
+		try:
+			source = inspect.getsource(source)
+		except Exception:
+			source = str
+	_disassemble_recursive(dis._try_compile(source, '<dis>'), **kwargs)
+
+
 FUNCTION_IDENTITY_ATTRS = ['arg_names', #list(pysig.parameters)
                            'code',      #dis._get_code_object(obj)
                            'filename',      #self.code.co_filename

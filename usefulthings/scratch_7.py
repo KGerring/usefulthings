@@ -6,7 +6,8 @@ from startups.helpers.introspection import arg
 #Parameter.KEYWORD_ONLY if kwarg after *args
 #Parameter.POSITIONAL_OR_KEYWORD is most flexible
 
-
+_xtube_user = 'youtube_dl.extractor.xtube.XTubeUserIE'
+#'https://www.xtube.com/profile/Mystic86-36973801/favvideos'
 
 _chr = chr
 _range = range
