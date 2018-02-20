@@ -461,7 +461,7 @@ KMD = dict(DATE_USED='kMDItemUsedDates',
 
 if __name__ == '__main__':
 	logger = configure_stream(level='DEBUG', use_logfile=False, template=short_template)
-	pf = PathEntry('/Users/kristen/PycharmProjects/proj/mdls')
+	pf = PathEntry('/Users/kristen/PycharmProjects/proj/mdls_command')
 	#check=pf.regexvisit('($[a-z]+|\.rst$|\.py$|\.plist$|\.in$|[a-z,1]+.txt$)', rec='[a-z]+')
-	cfg =PathEntry('/Users/kristen/PycharmProjects/proj/mdls/setup.cfg')
-	mdls = PathEntry('/Users/kristen/PycharmProjects/proj/mdls/mdls', relpath=True)
+	cfg =PathEntry('/Users/kristen/PycharmProjects/proj/mdls_command/setup.cfg')
+	mdls = PathEntry('/Users/kristen/PycharmProjects/proj/mdls_command/mdls_command', relpath=True)

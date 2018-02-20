@@ -151,7 +151,7 @@ from difflib import Differ, HtmlDiff
 
 
 
-_a = '''gfind /Users/kristen/PycharmProjects/proj/mdls -type d -name "*" -printf "%f\t%p\t%P\t%d\t%A@\t%C@\t%T@
+_a = '''gfind /Users/kristen/PycharmProjects/proj/mdls_command -type d -name "*" -printf "%f\t%p\t%P\t%d\t%A@\t%C@\t%T@
 \n"|sort'''
 _0 = str(chr(0))
 
@@ -232,7 +232,7 @@ def prepare_url(*args, **kwargs):
 
 
 COMPARE_URL = "https://api.github.com/repos/{user}/{repo}/compare/{_base}...{head}"
-ARCHIVE_URL = 'https://api.github.com/repos/KGerring/mdls/{zipball}/{master}' #path
+ARCHIVE_URL = 'https://api.github.com/repos/KGerring/mdls_command/{zipball}/{master}' #path
 #resp = self._get(url, allow_redirects=True, stream=True)
 
 
@@ -283,8 +283,8 @@ class NullObjectException(Exception):
 #-ilname pattern
 
 _gfind='''gfind . -type d -regular "^.*" -printf "%AY-%Am-%AdT%AH:%AM:00\t%P\t%sb\t%Y\n"'''
-_findthing ='''gfind $HOME -type d -iname mdls -regular ".*/PycharmProjects/.*"'''
-_findthing = '''gfind $PWD -type d -iname mdls -regular ".*/PycharmProjects/.*"'''
+_findthing ='''gfind $HOME -type d -iname mdls_command -regular ".*/PycharmProjects/.*"'''
+_findthing = '''gfind $PWD -type d -iname mdls_command -regular ".*/PycharmProjects/.*"'''
 
 
 #subprocess.Popen(['gfind','$PWD', '-mtime','0'],shell=True)

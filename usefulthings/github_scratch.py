@@ -28,23 +28,23 @@ from fnmatch import translate, filter
 import re, regex
 import subprocess
 
-_t = subprocess.Popen(['gfind', '.', '-type', 'd', '-path', './proj/mdls/[!.]*', '-regextype', 'posix-egrep', '-print'],
+_t = subprocess.Popen(['gfind', '.', '-type', 'd', '-path', './proj/mdls_command/[!.]*', '-regextype', 'posix-egrep', '-print'],
                       shell=0, stdout=-1, universal_newlines=True,
                       cwd='/Users/kristen/PycharmProjects').communicate()[0].splitlines()
 _tt= subprocess.Popen(
-		['gfind', '.', '-type', 'd', '-path', './proj/mdls/[!.]*', '-regextype', 'posix-egrep', '-printf', '%P\\0'],
+		['gfind', '.', '-type', 'd', '-path', './proj/mdls_command/[!.]*', '-regextype', 'posix-egrep', '-printf', '%P\\0'],
 		shell=0, stdout=-1, universal_newlines=True, cwd='/Users/kristen/PycharmProjects').communicate()[0]
 
-#import mdls.mixins._base
+#import mdls_command.mixins._base
 
 
 re_null = re.compile("'\(null\)'")
 re_mdimport = re.compile(r"'(?P<name>[^']+)'\s*'(?P<title>[^']+)'\s*'(?P<desc>[^']+)'\s*'(?P<short>[^']+)'")
 
-go = subprocess.getoutput('''mdfind -0 -onlyin /Users/kristen/PycharmProjects/proj/mdls . \
+go = subprocess.getoutput('''mdfind -0 -onlyin /Users/kristen/PycharmProjects/proj/mdls_command . \
 | xargs -0 grep -lE "import (\S+)" --exclude-dir "__pycache__" --null ''').split(chr(0))
 
-#list(glob.iglob('./**/mdls/**', recursive=True))
+#list(glob.iglob('./**/mdls_command/**', recursive=True))
 #list(_iglob('../**', recursive=True, dironly=False))
 
 #_make_child_relpath
@@ -61,7 +61,7 @@ go = subprocess.getoutput('''mdfind -0 -onlyin /Users/kristen/PycharmProjects/pr
 
 def iglob(pathname, recursive, dironly): pass
 
-#commits(path='mdls')
+#commits(path='mdls_command')
 
 #Git
 todo = 'https://github.com/msabramo/setuptools-git'
@@ -171,7 +171,7 @@ from os.path import join
 TIMEFMT = '%a, %d %b %Y %H:%M:%S %Z'
 #from pathlib import _PreciseSelector, _RecursiveWildcardSelector, _Selector, _TerminatingSelector, _WildcardSelector
 
-#p = subprocess.Popen(['ls', '/Users/kristen/PycharmProjects/proj/mdls'], stdout=-1)
+#p = subprocess.Popen(['ls', '/Users/kristen/PycharmProjects/proj/mdls_command'], stdout=-1)
 #substitutions, 0 insertions, 1 deletions
 
 topdown=True

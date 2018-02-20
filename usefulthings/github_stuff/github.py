@@ -25,13 +25,13 @@ def now_time_commit():
 	return get_now(name='US/Eastern').strftime('%Y-%m-%dT%H:%M:%SZ')
 
 RSS_GIT ='http://127.0.0.1:1234/?p=.git;a=rss'
-ATOM_GIT ='http://127.0.0.1:1234/?p=.git;a=atom;f=mdls/_base.py'
-RAW='http://127.0.0.1:1234/?p=.git;a=blob_plain;f=mdls/metadata/utt.py;hb=fdc7318744f2b87ae1c92c9fbc83f4233dce6cb0'
+ATOM_GIT ='http://127.0.0.1:1234/?p=.git;a=atom;f=mdls_command/_base.py'
+RAW='http://127.0.0.1:1234/?p=.git;a=blob_plain;f=mdls_command/metadata/utt.py;hb=fdc7318744f2b87ae1c92c9fbc83f4233dce6cb0'
 __url_cache__ = dict()
 
 
 
-#cmd('gfind /Users/kristen/PycharmProjects/proj/mdls -type f -name "*"|grep -v ".git"')
+#cmd('gfind /Users/kristen/PycharmProjects/proj/mdls_command -type f -name "*"|grep -v ".git"')
 RH = '/Users/kristen/Library/Application Support/Gitbox/git-1.7.7.2.3.g19dee/git.bundle/lib/python2.7/site-packages/git_remote_helpers'
 
 ACCEPT_HEADERS = dict(json=     'application/vnd.github.v3+json',
@@ -46,7 +46,7 @@ ACCEPT_HEADERS = dict(json=     'application/vnd.github.v3+json',
 CONF ='''
 # --- Example file ---
 # this is a comment
-url ="https://api.github.com/repos/KGerring/mdls/git/blobs/fc6e67a1c51cbfdd1a10cea8d288374b8ba60ff0"
+url ="https://api.github.com/repos/KGerring/mdls_command/git/blobs/fc6e67a1c51cbfdd1a10cea8d288374b8ba60ff0"
 header= "Authorization: token b2e768397367c7b46c4de3d73ad78b41c6d01faa"
 header="Accept: application/vnd.github.v3.raw"
 '''
@@ -58,7 +58,7 @@ T= '%Y-%m-%dT%H:%M:%SZ'
 #dt = datetime.strptime(time_str, __timeformat__)
 #datetime.datetime.strptime('Tue, 11 Apr 2017 21:32:02 GMT', '%a, %d %b %Y %H:%M:%S %Z')
 
-#m.join('mdls','_data').listdir()[0].relto(m)
+#m.join('mdls_command','_data').listdir()[0].relto(m)
 
 def ensure_make(repo, path):
 	from usefulthings.github_stuff.path_stuff import PathEntry

@@ -1,6 +1,6 @@
 #!/usr/bin/env
 # -*- coding: utf-8 -*-
-# filename = mdls
+# filename = mdls_command
 # author=AutisticScreeching
 # date = 3/21/17
 import sys, os
@@ -44,7 +44,7 @@ def process_open(stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                  shell=True, cwd = '~', env=None, encoding='utf-8',
                  universal_newlines=True, close_fds=None,
                  preexec_fn = os.chdir('/')):  #'INI', #'GOOGLE_APPLICATION_CREDENTIALS'
-	"""mdls -name kMDItemContentTypeTree -name kMDItemKind -name kMDItemLastUsedDate -raw ~/.config/.app.ini |xargs -0"""
+	"""mdls_command -name kMDItemContentTypeTree -name kMDItemKind -name kMDItemLastUsedDate -raw ~/.config/.app.ini |xargs -0"""
 	pass
 
 
@@ -100,9 +100,9 @@ class NameTag(object):
 		
 mail_message = """mdfind 'kMDItemKind="Mail Message"cd'"""
 
-find_pixel_each = """mdfind -0 "kMDItemFocalLength == '*'" | xargs -0 mdls | grep -E '(PixelHeight|DisplayName|PixelWidth)'"""
+find_pixel_each = """mdfind -0 "kMDItemFocalLength == '*'" | xargs -0 mdls_command | grep -E '(PixelHeight|DisplayName|PixelWidth)'"""
 
-#params = ['mdls']
+#params = ['mdls_command']
 #attrs = ['kMDItemPath', 'kMDItemUserTags', 'kMDItemFSContentChangeDate', 'kMDItemContentModificationDate']
 #params.extend(['-plist', '-'])
 #params.append(obj)
@@ -110,7 +110,7 @@ find_pixel_each = """mdfind -0 "kMDItemFocalLength == '*'" | xargs -0 mdls | gre
 #from plistlib import loads
 
 
-LS = "mdls [-name attributeName] [-raw [-nullMarker markerString]] file"
+LS = "mdls_command [-name attributeName] [-raw [-nullMarker markerString]] file"
 
 
 PA = Popen(['mdfind',
@@ -118,7 +118,7 @@ PA = Popen(['mdfind',
             "kMDItemFocalLength == '*'"], stdout=-1, stderr=-1)
 PB = Popen(['xargs',
             '-0',
-            'mdls'], stdin=PA.stdout, stdout=-1, stderr=-1)
+            'mdls_command'], stdin=PA.stdout, stdout=-1, stderr=-1)
 PC = Popen(['grep',
             '-E',
             '(PixelHeight|DisplayName|PixelWidth)'], stdin=PB.stdout, stdout=-1, stderr=-1)
