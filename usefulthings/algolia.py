@@ -16,7 +16,7 @@ from algoliasearch.helpers import urlify, CustomJSONEncoder
 from algoliasearch.index import IndexIterator, Index
 from algoliasearch.transport import Transport, HTTPAdapter, Session
 from algoliasearch.client import Client, RequestOptions
-import startups.helpers.ipython.info
+import startups.helpers._ipython.info
 from startups.helpers.third_party import get_algolia
 from werkzeug.datastructures import (CombinedMultiDict, MultiDict)
 from IPython.utils.ipstruct import Struct

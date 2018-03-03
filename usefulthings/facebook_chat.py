@@ -3,7 +3,7 @@
 # filename = facebook_chat
 # author=KGerring
 # date = 6/23/17
-from startups import *
+#from startups import *
 import sys, os
 import fbchat
 import fbchat.client
@@ -20,6 +20,10 @@ from fbchat.models import User as OldUser, Message as OldMessage
 from usefulthings import datetime_stuff
 from fbchat.client import graphql_to_message, graphql_response_to_json
 from isodate import parse_datetime
+
+
+
+
 FMTSTR = '%b %d,%l:%M%p'
 
 
@@ -369,6 +373,9 @@ def process_all_users(self):
 	users = [(pythonize(user.name), user) for user in self.fetchAllUsers()]
 	return AttrDict(users)
 
+
+
+
 def get_facebook():
 	key = get_keychain()
 	email = key.get('facebook', 'email')
@@ -377,6 +384,8 @@ def get_facebook():
 	if client.password:
 		client.password = '******'
 	return client
+
+
 
 def get_self_sent_messages(client, limit = 50):
 	ID = client.uid

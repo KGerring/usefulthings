@@ -3,28 +3,45 @@
 # filename = webdrivers
 # author=KGerring
 # date = 7/8/17
-from startups import *
+#from startups import *
+from startups.helpers.introspection import join
 import sys, os
-join = os.path.join
+
+__SUDO__ = True
+
 WEBDRIVERS = os.path.expanduser('~/webdrivers')
 
+if __SUDO__:
+	WEBDRIVERS = 'sudo {}'.format(WEBDRIVERS)
+else:
+	WEBDRIVERS = os.path.expanduser('~/webdrivers')
+
+#WEBDRIVERS = os.path.expanduser('~/webdrivers')
+
 SELENIUM = '/Users/kristen/anaconda/selenium'
-STANDALONE = join(WEBDRIVERS, 'selenium-server-standalone-3.1.0.jar')
-GECKO = join(WEBDRIVERS,'geckodriver')
-JQUERY = join(WEBDRIVERS,'jquery-3.1.1.js')
-PHANTOMJS = join(WEBDRIVERS,'phantomjs')
-CHROME = join(WEBDRIVERS,'chromedriver')
+
+STANDALONE =    join(WEBDRIVERS, 'selenium-server-standalone-3.1.0.jar')
+GECKO =         join(WEBDRIVERS,'geckodriver')
+JQUERY =        join(WEBDRIVERS,'jquery-3.1.1.js')
+PHANTOMJS =     join(WEBDRIVERS,'phantomjs')
+CHROME =        join(WEBDRIVERS,'chromedriver')
 FIREFOX_PROFILE_DIR = '/Users/kristen/Library/Application Support/Firefox/Profiles'
 FIREFOX_PROFILE = join(FIREFOX_PROFILE_DIR, 'lsvbvalb.dev-edition-default')
 #APP ='/Applications/FirefoxDeveloperEdition.app'
-BINARY = '/Applications/FirefoxDeveloperEdition.app/Contents/MacOS/firefox-bin'
+
+if __SUDO__:
+
+	BINARY = '/Applications/FirefoxDeveloperEdition.app/Contents/MacOS/firefox-bin'
+else:
+	BINARY = '/Applications/FirefoxDeveloperEdition.app/Contents/MacOS/firefox-bin'
+	
 from selenium.webdriver import phantomjs, chrome, common, firefox
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 #chrome_options = webdriver.ChromeOptions()
 
 Binary = firefox.firefox_binary.FirefoxBinary
-Profile = firefox.firefox_profile.FirefoxProfile
+Profile = firefox.firefox_profile.FirefoxProfile #'get_cookies,
 
 
 def get_chrome():
@@ -35,7 +52,12 @@ def get_chrome():
 def get_phantomjs():
 	from selenium import webdriver
 	from selenium.webdriver import phantomjs
-	service = phantomjs.webdriver.Service(PHANTOMJS)
+	try:
+		service = phantomjs.webdriver.Service(PHANTOMJS)
+	except PermissionError:
+		PHANTOMJS = 'sudo {}'.format(PHANTOMJS)
+		service = phantomjs.webdriver.Service(PHANTOMJS)
+		JS = webdriver.PhantomJS(PHANTOMJS)
 	JS = webdriver.PhantomJS(PHANTOMJS)
 	return JS
 
@@ -46,8 +68,10 @@ def get_firefox():
 	Firefox = webdriver.Firefox(prof, binary, executable_path=GECKO)
 	return Firefox
 
+
+DOCUMENTS = '/Users/kristen/Documents'
 bookmarks = dict(
-BK_C = '/Users/kristen/Library/Mobile Documents/com~apple~CloudDocs/bookmarks_3_16_17.html',
+#BK_C = '/Users/kristen/Library/Mobile Documents/com~apple~CloudDocs/bookmarks_3_16_17.html',
 DOCUMENTS ='/Users/kristen/Documents',
 BK = join(DOCUMENTS, 'bookmarks_3_22_17.html'),
 BK4 = join(DOCUMENTS, 'bookmarks_3_22_174.html'),
